@@ -1,0 +1,73 @@
+p {
+  color: white;
+}
+
+button {
+  border-radius: 50px;
+}
+
+a.button1 {
+  display: inline-block;
+  height: 3em;
+  padding: 0.8em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.4em;
+  box-sizing: border-box;
+  text-decoration: none;
+  vertical-align: baseline;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 1.2em;
+  color: #ffffff;
+  text-align: center;
+  background-color: #e62222;
+  transition: all 0.2s;
+}
+a.button1:hover {
+  color: #ffffff;
+  background-color: #b61f1f;
+}
+@media all and (max-width: 10000em) {
+  a.button1 {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+
+a.button2 {
+  display: inline-block;
+  height: 3em;
+  padding: 0.8em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.4em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 1.2em;
+  color: #ffffff;
+  text-align: center;
+  background-color: #03b940;
+  transition: all 0.2s;
+}
+a.button2:hover {
+  color: #ffffff;
+  background-color: #167e38;
+}
+@media all and (max-width: 10000em) {
+  a.button2 {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+
+#footer {
+  position: fixed;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+  bottom: 0;
+  width: 100%;
+  /* Height of the footer*/
+  height: 10%;
+  background: grey;
+}

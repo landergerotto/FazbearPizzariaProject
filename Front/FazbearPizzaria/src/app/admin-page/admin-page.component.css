@@ -1,10 +1,22 @@
 /* Required for full background image */
 
+.fundo {
+  background-image: url(../../assets/dam3shz-7e2d3ab9-b481-4c9e-b686-239a3b17ac1c.jpg);
+  background-size: cover;
+  width: 99.9%;
+  height: 99.8vh;
+}
+
 html,
 body,
 header,
 .view {
   height: 100%;
+}
+
+button {
+  width: 20%;
+  height: 10rem;
 }
 
 @media (max-width: 740px) {

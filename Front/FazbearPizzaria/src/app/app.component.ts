@@ -5,7 +5,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { PedidosPageComponent } from './pedidos-page/pedidos-page.component';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -5,15 +5,26 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule,
+  imports: [CommonModule, RouterOutlet, MatCardModule, MatButtonModule,
             FormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
+
+  constructor(
+    private router: Router,
+  ) { }
+
   hide = true;
+
+  goToLogin()
+  {
+    this.router.navigate(["admin"])
+  }
 }

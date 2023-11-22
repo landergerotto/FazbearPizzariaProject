@@ -1,0 +1,9 @@
+mat-card-content, mat-card-title {
+  color: white;
+  text-align: center;
+  font-family: 'Varela Round'
+
+}
+.pronto {
+  background-color: rgb(0, 124, 83);
+}

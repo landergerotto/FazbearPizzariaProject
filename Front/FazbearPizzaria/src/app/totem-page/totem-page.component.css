@@ -1,9 +1,59 @@
-p {
+.body {
+  overflow: hidden !important;
+  margin-bottom: 7em;
+  background-color: '#212529';
+}
+
+.example-viewport {
+  height: 61em;
+  width: 100%;
+  border: 1px solid black;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+.example-item {
+  height: 10em;
+}
+
+.card {
+  border-radius: 0;
+}
+
+img {
+  width: 10em;
+  height: 10em;
+}
+
+strong {
+  margin-top: 1em;
+}
+
+.scroll {
+  overflow-y: auto !important;
+  height: 49.2em;
+}
+
+.menu {
+  overflow-y: auto !important;
+
+  height: 69.3em;
+}
+
+.menu-dentro {
   color: white;
 }
 
-button {
-  border-radius: 50px;
+.card.scroll {
+  overflow-y: auto !important;
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 7em;
+
+  > .card-body {
+    overflow-y: auto;
+  }
 }
 
 a.button1 {
@@ -38,7 +88,7 @@ a.button2 {
   display: inline-block;
   height: 3em;
   padding: 0.8em 1.2em;
-  margin: 0 0.3em 0.3em 0;
+  margin: 3em 0.3em 0.3em 0em;
   border-radius: 0.4em;
   box-sizing: border-box;
   text-decoration: none;
@@ -50,10 +100,12 @@ a.button2 {
   background-color: #03b940;
   transition: all 0.2s;
 }
+
 a.button2:hover {
   color: #ffffff;
   background-color: #167e38;
 }
+
 @media all and (max-width: 10000em) {
   a.button2 {
     display: block;
@@ -68,6 +120,6 @@ a.button2:hover {
   bottom: 0;
   width: 100%;
   /* Height of the footer*/
-  height: 10%;
+  height: 7em;
   background: grey;
 }

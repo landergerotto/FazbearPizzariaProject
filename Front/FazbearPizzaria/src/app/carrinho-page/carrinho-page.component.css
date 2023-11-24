@@ -1,0 +1,20 @@
+@media (min-width: 1025px) {
+  .h-custom {
+    height: 100vh !important;
+  }
+}
+
+
+
+.scroll {
+  overflow-y: auto !important;
+  border-radius: 1em;
+  height: 49.2em;
+  margin-bottom: 0px;
+}
+
+.menu {
+  overflow-y: auto !important;
+
+  height: 69.3em;
+}

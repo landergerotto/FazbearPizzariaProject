@@ -4,6 +4,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { PedidosPageComponent } from './pedidos-page/pedidos-page.component';
 import { TotemPageComponent } from './totem-page/totem-page.component';
 import { ProdutosPageComponent } from './produtos-page/produtos-page.component';
+import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
 
 export const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -11,6 +12,8 @@ export const routes: Routes = [
   {path:'pedidos', component: PedidosPageComponent},
   {path:'totem', component: TotemPageComponent},
   {path:'produtos', component: ProdutosPageComponent},
+  {path:'cart', component: CarrinhoPageComponent},
+
 
 
 ];

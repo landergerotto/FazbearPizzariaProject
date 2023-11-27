@@ -5,7 +5,7 @@ if exists(select * from sys.databases where name = 'FreddyFazbearDB')
 	drop database FreddyFazbearDB
 go
 
-create database FreddyFazbear
+create database FreddyFazbearDB
 go
 
 use FreddyFazbearDB
@@ -19,7 +19,7 @@ go
 
 create table Usuario(
 	ID int identity primary key,
-	Nome varchar(80) not null,
+	ULogin varchar(80) not null,
 	Senha varchar(MAX) not null,
 	Salt varchar(200) not null,
 	Adm bit not null,

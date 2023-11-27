@@ -35,7 +35,7 @@ public partial class FreddyFazbearDbContext : DbContext
     {
         modelBuilder.Entity<Imagem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC27480117BD");
+            entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC27B6161B41");
 
             entity.ToTable("Imagem");
 
@@ -45,7 +45,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Pedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Pedido__3214EC276844351C");
+            entity.HasKey(e => e.Id).HasName("PK__Pedido__3214EC2729C4C037");
 
             entity.ToTable("Pedido");
 
@@ -54,7 +54,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Produto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produto__3214EC27117D979D");
+            entity.HasKey(e => e.Id).HasName("PK__Produto__3214EC274914C378");
 
             entity.ToTable("Produto");
 
@@ -78,7 +78,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<ProdutosPedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produtos__3214EC27A7F58F13");
+            entity.HasKey(e => e.Id).HasName("PK__Produtos__3214EC2760D0E641");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.PedidoId).HasColumnName("PedidoID");
@@ -100,7 +100,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Promocao>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC27F5122860");
+            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC2792CE590F");
 
             entity.ToTable("Promocao");
 
@@ -114,16 +114,12 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC27493EE96A");
+            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC272DD5C955");
 
             entity.ToTable("Usuario");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ImagemId).HasColumnName("ImagemID");
-            entity.Property(e => e.Nome)
-                .IsRequired()
-                .HasMaxLength(80)
-                .IsUnicode(false);
             entity.Property(e => e.Salt)
                 .IsRequired()
                 .HasMaxLength(200)
@@ -131,6 +127,11 @@ public partial class FreddyFazbearDbContext : DbContext
             entity.Property(e => e.Senha)
                 .IsRequired()
                 .IsUnicode(false);
+            entity.Property(e => e.Ulogin)
+                .IsRequired()
+                .HasMaxLength(80)
+                .IsUnicode(false)
+                .HasColumnName("ULogin");
 
             entity.HasOne(d => d.Imagem).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.ImagemId)

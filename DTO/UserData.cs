@@ -2,6 +2,6 @@ namespace DTO;
 
 public class UserData
 {
-    public string Name { get; set; }
-    public string Passwrod { get; set; }
+    public string Login { get; set; }
+    public string Password { get; set; }
 }

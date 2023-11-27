@@ -6,6 +6,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ClientServiceService } from '../services/client.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login-page',
@@ -18,6 +22,9 @@ import { Router, RouterOutlet } from '@angular/router';
 export class LoginPageComponent {
 
   constructor(
+    public dialog: MatDialog,
+    private client: ClientServiceService,
+    private http: HttpClient,
     private router: Router,
   ) { }
 

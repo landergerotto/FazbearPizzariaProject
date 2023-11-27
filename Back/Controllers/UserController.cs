@@ -13,6 +13,7 @@ namespace Back.Controllers;
 using DTO;
 using Back.Model;
 using Services;
+using Microsoft.Extensions.Logging.Abstractions;
 
 [ApiController]
 [Route("user")]
@@ -40,7 +41,8 @@ public class UserController : ControllerBase
         
         var jwt = await security.GenerateJwt(new {
             id = loggedUser.Id,
-            photoId = loggedUser.ImagemId
+            photoId = loggedUser.ImagemId,
+            adm = loggedUser.Adm
         });
         
         return Ok(new { jwt });

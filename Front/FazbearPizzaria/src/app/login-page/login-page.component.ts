@@ -28,10 +28,28 @@ export class LoginPageComponent {
     private router: Router,
   ) { }
 
+  username: string = ""
+  password: string = ""
+
   hide = true;
 
-  goToLogin()
+  logar()
   {
-    this.router.navigate(["admin"])
+    this.client.login({
+      login: this.username,
+      password: this.password,
+      adm: false,
+    }, (result: any) => {
+      if (result == null)
+      {
+        alert('Senha ou usuário incorreto!')
+        this.router.navigate(["admin"])
+
+      }
+      else
+      {
+        sessionStorage.setItem('jwt', JSON.stringify(result))
+      }
+    })
   }
 }

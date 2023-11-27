@@ -60,13 +60,15 @@ export class NewUserDialog
 
   create()
   {
-
+    const elp = this.isAdm;
+    console.log(elp == true ? 1 : 0)
     if (this.password == this.repeatPassword) {
       this.client.register({
         login: this.username,
         password: this.password,
-        adm: this.isAdm ? 1 : 0,
+        adm: elp,
       })
+      console.log(this.isAdm)
       this.dialogRef.close()
     }
 

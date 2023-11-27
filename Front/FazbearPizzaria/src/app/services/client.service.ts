@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ClientData } from '../data/client-data';
+import { ClientData } from '../model/client-data';
 import { ApiClientService } from './api-client.service';
 
 @Injectable({
@@ -25,4 +25,5 @@ export class ClientServiceService {
           callback(null)
         })
   }
+
 }

@@ -7,12 +7,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Back.Model;
 using Back.Services;
+using Trevisharp.Security.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<FreddyFazbearDbContext>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddSingleton<CryptoService>(p => new() {
+    InternalKeySize = 24,
+    UpdatePeriod = TimeSpan.FromDays(1)
+});
 builder.Services.AddSingleton<ISecurityService, SecurityService>();
 
 builder.Services.AddCors(options =>

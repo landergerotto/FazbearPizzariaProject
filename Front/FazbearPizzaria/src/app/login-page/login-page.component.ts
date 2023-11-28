@@ -28,27 +28,31 @@ export class LoginPageComponent {
     private router: Router,
   ) { }
 
-  username: string = ""
-  password: string = ""
+  username: string = ''
+  password: string = ''
 
   hide = true;
 
   logar()
   {
+    console.log(this.username)
     this.client.login({
       login: this.username,
       password: this.password,
-      adm: false,
+      isAdm: false,
     }, (result: any) => {
       if (result == null)
       {
         alert('Senha ou usuário incorreto!')
-        this.router.navigate(["admin"])
-
       }
       else
       {
-        sessionStorage.setItem('jwt', JSON.stringify(result))
+        if (result.adm == false)
+          console.log("nao adeemi kk")
+        else {
+          sessionStorage.setItem('jwt', JSON.stringify(result))
+          this.router.navigate(["admin"])
+        }
       }
     })
   }

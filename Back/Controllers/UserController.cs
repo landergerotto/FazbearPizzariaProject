@@ -14,6 +14,7 @@ using DTO;
 using Back.Model;
 using Services;
 using Microsoft.Extensions.Logging.Abstractions;
+using Trevisharp.Security.Jwt;
 
 [ApiController]
 [Route("user")]
@@ -24,7 +25,8 @@ public class UserController : ControllerBase
     public async Task<IActionResult> Login(
         [FromBody]UserData user,
         [FromServices]IUserService userService,
-        [FromServices]ISecurityService security)
+        [FromServices]ISecurityService security,
+        [FromServices]CryptoService crypto)
     {
         var loggedUser = await userService
             .GetByLogin(user.Login);
@@ -39,13 +41,14 @@ public class UserController : ControllerBase
         if (password != realPassword)
             return Unauthorized("Senha incorreta.");
         
-        var jwt = await security.GenerateJwt(new {
+        var jwt = crypto.GetToken(new {
             id = loggedUser.Id,
             photoId = loggedUser.ImagemId,
             adm = loggedUser.Adm
         });
-        
-        return Ok(new { jwt });
+    
+
+        return Ok(new { jwt, loggedUser.Adm });
     }
 
     [HttpPost("register")]

@@ -1,0 +1,43 @@
+<mat-card>
+
+  <mat-card-header class="justify-content-center">
+    <mat-card-title color="white" class="mb-3">Produto</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form class="example-form">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput  name="username">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Tipo</mat-label>
+        <input matInput >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Preço</mat-label>
+        <input matInput >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="3"
+                  cdkAutosizeMaxRows="12"></textarea>
+      </mat-form-field>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button>Log in</button>
+  </mat-card-actions>
+
+</mat-card>

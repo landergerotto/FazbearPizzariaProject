@@ -52,7 +52,7 @@ export class NewUserDialog
   username: string = ""
   password: string = ""
   repeatPassword: string = ""
-  isAdm = false;
+  isAdm : boolean = false;
 
   constructor(public dialogRef: MatDialogRef<NewUserDialog>,
     private client: ClientServiceService
@@ -66,7 +66,7 @@ export class NewUserDialog
       this.client.register({
         login: this.username,
         password: this.password,
-        adm: elp,
+        isAdm: elp,
       })
       console.log(this.isAdm)
       this.dialogRef.close()

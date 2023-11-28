@@ -23,19 +23,17 @@ public class ProductController : ControllerBase
     [HttpPost("register")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> Create(
-        [FromBody]UserData user,
-        [FromServices]IUserService userService)
+        [FromBody]ProductData prod,
+        [FromServices]IProductService prodService)
     {
         var errors = new List<string>();
-        if (user is null || user.Login is null)
+        if (prod is null || prod.Name is null)
             errors.Add("É necessário informar um login.");
-        if (user.Login.Length < 5)
-            errors.Add("O Login deve conter ao menos 5 caracteres.");
 
         if (errors.Count > 0)
             return BadRequest(errors);
 
-        await userService.Create(user);
+        await prodService.Create(prod);
         return Ok();
     }
 

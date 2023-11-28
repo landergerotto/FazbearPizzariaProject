@@ -11,6 +11,7 @@ import { ClientServiceService } from '../services/client.service';
 import { HttpClient } from '@angular/common/http';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-produtos-page',
@@ -48,28 +49,26 @@ export class ProdutosPageComponent {
 })
 export class ProdDialog
 {
-  username: string = ""
-  password: string = ""
-  repeatPassword: string = ""
-  isAdm : boolean = false;
+  name: string = ""
+  type: string = ""
+  price: number = 0
+  description : string = "";
 
   constructor(public dialogRef: MatDialogRef<ProdDialog>,
-    private client: ClientServiceService
+    private prod: ProductService
     ) {}
 
   create()
   {
-    const elp = this.isAdm;
-    console.log(elp == true ? 1 : 0)
-    if (this.password == this.repeatPassword) {
-      this.client.register({
-        login: this.username,
-        password: this.password,
-        isAdm: elp,
+      this.prod.registerProd({
+        name: this.name,
+        type: this.type,
+        price: this.price,
+        description: this.description,
       })
-      console.log(this.isAdm)
+
       this.dialogRef.close()
-    }
+
 
   }
 }
@@ -89,10 +88,10 @@ interface Food {
 })
 export class PromDialog
 {
-  username: string = ""
-  password: string = ""
-  repeatPassword: string = ""
-  isAdm : boolean = false;
+  // name: string = ""
+  // type: string = ""
+  // price: number = 0
+  // description : string = "";
 
   constructor(public dialogRef: MatDialogRef<PromDialog>,
     private client: ClientServiceService

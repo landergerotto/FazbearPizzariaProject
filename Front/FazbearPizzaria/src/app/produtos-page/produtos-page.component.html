@@ -7,7 +7,9 @@
       </div>
 
       <div>
-        
+        @for (item of list; track item.id) {
+          <p>{{item.nome}}</p>
+        }
       </div>
     </div>
   </mat-tab>

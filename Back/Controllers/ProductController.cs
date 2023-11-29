@@ -33,7 +33,7 @@ public class ProductController : ControllerBase
 
         var list = await prodService.GetProdutos();
 
-        return Ok( list  );
+        return Ok( list );
     }
 
     [HttpPost("register")]

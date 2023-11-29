@@ -1,15 +1,25 @@
 <mat-tab-group class="mt-5">
 
   <mat-tab label="Produto">
-    <div class="col-5 mt-5 mx-auto">
+    <div class="col-7 mt-5 mx-auto">
       <div class="text-center mb-4">
         <button mat-raised-button color="primary" (click)="cadProd()">Cadastrar</button>
       </div>
 
       <div>
-        @for (item of list; track item.id) {
-          <p>{{item.nome}}</p>
-        }
+        <div class="row row-cols-1 row-cols-md-4 g-2">
+          @for (item of list; track item.id) {
+            <div class="col">
+              <div class="card h-100">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.nome}}</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
       </div>
     </div>
   </mat-tab>

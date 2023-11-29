@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { ProductService } from '../services/product.service';
+import { InitProductService } from '../services/init-product.service';
 
 @Component({
   selector: 'app-produtos-page',
@@ -21,11 +22,16 @@ import { ProductService } from '../services/product.service';
   templateUrl: './produtos-page.component.html',
   styleUrl: './produtos-page.component.css'
 })
-export class ProdutosPageComponent {
+export class ProdutosPageComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private service: InitProductService
   ) { }
+
+  ngOnInit(): void {
+    this.service.initProducts();
+  }
 
   cadProd()
   {
@@ -59,7 +65,9 @@ export class ProdDialog
     ) {}
 
   create()
-  {
+  {   console.log(this.type)
+    console.log(this.price)
+    console.log(this.description)
       this.prod.registerProd({
         name: this.name,
         type: this.type,
@@ -68,8 +76,6 @@ export class ProdDialog
       })
 
       this.dialogRef.close()
-
-
   }
 }
 

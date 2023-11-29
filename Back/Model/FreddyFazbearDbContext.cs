@@ -28,13 +28,14 @@ public partial class FreddyFazbearDbContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=CGS-C-0001L\\SQLEXPRESS;Initial Catalog=FreddyFazbearDB;Integrated Security=True;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Imagem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC27B6161B41");
+            entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC27AD75E45C");
 
             entity.ToTable("Imagem");
 
@@ -44,7 +45,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Pedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Pedido__3214EC2729C4C037");
+            entity.HasKey(e => e.Id).HasName("PK__Pedido__3214EC27D4F04AEC");
 
             entity.ToTable("Pedido");
 
@@ -53,7 +54,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Produto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produto__3214EC274914C378");
+            entity.HasKey(e => e.Id).HasName("PK__Produto__3214EC27A1538182");
 
             entity.ToTable("Produto");
 
@@ -64,7 +65,6 @@ public partial class FreddyFazbearDbContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Preco).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.Tipo)
                 .IsRequired()
                 .HasMaxLength(25)
@@ -77,7 +77,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<ProdutosPedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produtos__3214EC2760D0E641");
+            entity.HasKey(e => e.Id).HasName("PK__Produtos__3214EC27F3AAE1DB");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.PedidoId).HasColumnName("PedidoID");
@@ -99,7 +99,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Promocao>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC2792CE590F");
+            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC27AC75DEE9");
 
             entity.ToTable("Promocao");
 
@@ -113,7 +113,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC272DD5C955");
+            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC2702A4DA31");
 
             entity.ToTable("Usuario");
 

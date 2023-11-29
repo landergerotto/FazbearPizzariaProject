@@ -10,22 +10,23 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Nome</mat-label>
-        <input matInput  name="username">
+        <input matInput [(ngModel)]="name" name="name">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Tipo</mat-label>
-        <input matInput >
+        <input matInput [(ngModel)]="type" name="type">
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field floatLabel="always" class="example-full-width">
         <mat-label>Preço</mat-label>
-        <input matInput >
+        <span matTextPrefix>$&nbsp;</span>
+        <input matInput type="number" [(ngModel)]="price" name="price">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Descrição</mat-label>
-        <textarea matInput
+        <textarea matInput [(ngModel)]="description" name="description"
                   cdkTextareaAutosize
                   #autosize="cdkTextareaAutosize"
                   cdkAutosizeMinRows="3"
@@ -37,7 +38,7 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-button>Log in</button>
+    <button mat-button (click)="create()">Cadastrar</button>
   </mat-card-actions>
 
 </mat-card>

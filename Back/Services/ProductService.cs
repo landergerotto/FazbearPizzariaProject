@@ -21,7 +21,7 @@ public class ProductService : IProductService
 
         produto.Nome = data.Name;
         produto.Tipo = data.Type;
-        produto.Preco = data.Price;
+        // produto.Preco = data.Price;
         produto.Descricao = data.Description;
 
         this.ctx.Add(produto);

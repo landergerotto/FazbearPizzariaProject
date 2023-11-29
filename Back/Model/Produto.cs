@@ -11,7 +11,7 @@ public partial class Produto
 
     public string Tipo { get; set; }
 
-    public decimal Preco { get; set; }
+    public double Preco { get; set; }
 
     public string Descricao { get; set; }
 

@@ -31,7 +31,7 @@ create table Produto (
 	ID int identity primary key,
 	Nome varchar(50) not null,
 	Tipo varchar(25) not null,
-	Preco decimal (5, 2) not null,
+	Preco float not null,
 	Descricao varchar(MAX),
 	ImagemID int references Imagem(ID)
 )
@@ -55,4 +55,3 @@ create table ProdutosPedidos (
 	PedidoID int references Pedido(ID),
 	PromocaoID int references Promocao(ID)
 )
-

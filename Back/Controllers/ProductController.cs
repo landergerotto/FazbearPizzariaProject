@@ -21,22 +21,19 @@ using Trevisharp.Security.Jwt;
 public class ProductController : ControllerBase
 {
 
-    [HttpGet("")]
+    [HttpGet]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> GetProducts(
-        [FromBody]ProductData prod,
         [FromServices]IProductService prodService)
     {
         var errors = new List<string>();
-        if (prod is null || prod.Name is null)
-            errors.Add("É necessário informar um nome ao produto.");
 
         if (errors.Count > 0)
             return BadRequest(errors);
 
         var list = await prodService.GetProdutos();
 
-        return Ok( new { list } );
+        return Ok( list  );
     }
 
     [HttpPost("register")]

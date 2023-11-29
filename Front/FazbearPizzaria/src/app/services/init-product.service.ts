@@ -9,9 +9,8 @@ export class InitProductService {
   constructor(private http: ApiClientService) { }
 
   initProducts() {
-    console.log("me chamaram kkkkkk")
-    // this.http.get("")
 
+    return this.http.get("product")
   }
 
 }

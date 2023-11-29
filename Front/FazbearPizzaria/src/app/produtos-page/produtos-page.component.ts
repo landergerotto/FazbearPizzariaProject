@@ -13,6 +13,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { ProductService } from '../services/product.service';
 import { InitProductService } from '../services/init-product.service';
+import { ProductTableData } from '../model/product-table-data';
 
 @Component({
   selector: 'app-produtos-page',
@@ -24,18 +25,26 @@ import { InitProductService } from '../services/init-product.service';
 })
 export class ProdutosPageComponent implements OnInit {
 
+  list : any
+
   constructor(
     public dialog: MatDialog,
     private service: InitProductService
   ) { }
 
-  ngOnInit(): void {
-    this.service.initProducts();
+  ngOnInit() {
+    this.service.initProducts()
+      .subscribe( (data) => {
+        this.list = data;
+        localStorage.setItem('prodList', JSON.stringify(this.list))
+      });
   }
 
   cadProd()
   {
     this.dialog.open(ProdDialog);
+    console.log(this.list)
+
   }
 
   cadProm()

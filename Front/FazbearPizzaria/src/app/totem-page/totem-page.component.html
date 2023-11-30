@@ -125,7 +125,9 @@
                           >
                             <i class="fas fa-minus"></i>
                           </button>
-
+                          <button mat-raised-button color="warn">
+                            -
+                          </button>
                           <input
                             id="form1"
                             min="0"
@@ -135,7 +137,11 @@
                             class="form-control form-control-sm"
                             style="width: 50px"
                           />
-
+                          <button mat-raised-button
+                            color="accent"
+                            (click)="addQuantity(item.id)">
+                            +
+                          </button>
                           <button
                             class="btn btn-link px-2"
                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()"

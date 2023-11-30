@@ -78,6 +78,7 @@ export class ProdDialog
         name: this.name,
         type: this.type,
         price: this.price,
+        quantity: 1,
         description: this.description,
       })
 

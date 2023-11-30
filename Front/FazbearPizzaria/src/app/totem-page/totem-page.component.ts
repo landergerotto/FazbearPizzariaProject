@@ -25,13 +25,6 @@ export class TotemPageComponent implements OnInit {
   prodList: any
   cart : CartData[] = []
   emptyCart : CartData[] = []
-  // obj: CartData = {id: number
-  //   nome: string;
-  //   tipo: string;
-  //   preco: number;
-  //   descricao: string;
-  //   quantity: number;
-  //   imageId: number;}
   constructor(
     public dialog: MatDialog,
     private service: InitProductService,
@@ -57,6 +50,19 @@ export class TotemPageComponent implements OnInit {
     console.log('fofo')
   }
 
+  addQuantity (id : number) {
+    var storedData = localStorage.getItem('cart');
+    if (storedData == null)
+        return;
+    var data = JSON.parse(storedData)
+    data.forEach((item : CartData )=> {
+      if (item.id == id)
+        item.id += 1;
+    console.log(data)
+      // localStorage.setItem('cart', JSON.stringify(data))
+    });
+  }
+
   cartRemoveItem() {
 
   }
@@ -67,7 +73,6 @@ export class TotemPageComponent implements OnInit {
       if (storedData == null)
         return
     this.cart = JSON.parse(storedData)
-    console.log('to tentando aq po')
     this.router.navigate(['totem']); // REDIRECIONAR PARA PRE-TOTEM
 
   }

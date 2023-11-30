@@ -35,7 +35,7 @@ public partial class FreddyFazbearDbContext : DbContext
     {
         modelBuilder.Entity<Imagem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC27AD75E45C");
+            entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC2799ECEA9A");
 
             entity.ToTable("Imagem");
 
@@ -45,7 +45,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Pedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Pedido__3214EC27D4F04AEC");
+            entity.HasKey(e => e.Id).HasName("PK__Pedido__3214EC274CE65663");
 
             entity.ToTable("Pedido");
 
@@ -54,7 +54,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Produto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produto__3214EC27A1538182");
+            entity.HasKey(e => e.Id).HasName("PK__Produto__3214EC27BD15B854");
 
             entity.ToTable("Produto");
 
@@ -77,7 +77,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<ProdutosPedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produtos__3214EC27F3AAE1DB");
+            entity.HasKey(e => e.Id).HasName("PK__Produtos__3214EC27163D05A3");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.PedidoId).HasColumnName("PedidoID");
@@ -99,7 +99,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Promocao>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC27AC75DEE9");
+            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC2773A4BE75");
 
             entity.ToTable("Promocao");
 
@@ -113,7 +113,7 @@ public partial class FreddyFazbearDbContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC2702A4DA31");
+            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC2759EB6307");
 
             entity.ToTable("Usuario");
 

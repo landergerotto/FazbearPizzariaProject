@@ -58,14 +58,27 @@ export class TotemPageComponent implements OnInit {
     data.forEach((item : CartData )=> {
       if (item.id == id)
         item.quantidade += 1;
+    });
     console.log(data)
     this.cart = data;
     localStorage.setItem('cart', JSON.stringify(data))
+  }
+
+  removeQuantity(id : number) {
+    var storedData = localStorage.getItem('cart');
+    if (storedData == null)
+        return;
+    var data = JSON.parse(storedData)
+    data.forEach((item : CartData )=> {
+      if (item.id == id)
+        item.quantidade -= 1;
+      if (item.quantidade == 0)
+        this.cartRemoveItem();
     });
   }
 
   cartRemoveItem() {
-
+    
   }
 
   cleanCart (){

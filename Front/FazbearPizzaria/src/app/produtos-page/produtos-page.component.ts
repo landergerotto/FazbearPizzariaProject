@@ -13,7 +13,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { ProductService } from '../services/product.service';
 import { InitProductService } from '../services/init-product.service';
-import { ProductTableData } from '../model/product-table-data';
 
 @Component({
   selector: 'app-produtos-page',
@@ -84,11 +83,6 @@ export class ProdDialog
 
       this.dialogRef.close()
   }
-}
-
-interface Food {
-  value: string;
-  viewValue: string;
 }
 
 @Component({

@@ -63,10 +63,10 @@
         <div class="card h-100 bg-dark">
           <div class="card-body menu-dentro ms-3 me-4 my-3">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-              @for (item of list; track item.id) {
+              @for (item of prodList; track item.id) {
               <div class="col">
                 <div class="boxheas">
-                  <a class="menuItem" (click)="buttonClick(item)">
+                  <a class="menuItem" (click)="cartAddItem(item)">
                     <div class="card h-100">
                       <img src="..." class="card-img-top" alt="..." />
                       <div class="card-body text-center">
@@ -99,262 +99,58 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">
-                      <div class="d-flex align-items-center">
-                        <img
-                          src="https://i.imgur.com/2DsA49b.webp"
-                          class="img-fluid rounded-3"
-                          alt="Book"
-                        />
-                        <div class="flex-column ms-4">
-                          <p class="mb-2">Thinking, Fast and Slow</p>
-                          <p class="mb-0">Daniel Kahneman</p>
+                  @for(item of cart; track cart) {
+                    <tr>
+                      <th scope="row">
+                        <div class="d-flex align-items-center">
+                          <img
+                            src="https://i.imgur.com/2DsA49b.webp"
+                            class="img-fluid rounded-3"
+                            alt="Book"
+                          />
+                          <div class="flex-column ms-4">
+                            <p class="mb-2">{{item.nome}}</p>
+                            <p class="mb-0">Daniel Kahneman</p>
+                          </div>
                         </div>
-                      </div>
-                    </th>
-                    <td class="align-middle">
-                      <p class="mb-0" style="font-weight: 500">Digital</p>
-                    </td>
-                    <td class="align-middle">
-                      <div class="d-flex flex-row">
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                        >
-                          <i class="fas fa-minus"></i>
-                        </button>
+                      </th>
+                      <td class="align-middle">
+                        <p class="mb-0" style="font-weight: 500">{{item.tipo}}</p>
+                      </td>
+                      <td class="align-middle">
+                        <div class="d-flex flex-row">
+                          <button
+                            class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                          >
+                            <i class="fas fa-minus"></i>
+                          </button>
 
-                        <input
-                          id="form1"
-                          min="0"
-                          name="quantity"
-                          value="2"
-                          type="number"
-                          class="form-control form-control-sm"
-                          style="width: 50px"
-                        />
+                          <input
+                            id="form1"
+                            min="0"
+                            name="quantity"
+                            value="1"
+                            type="number"
+                            class="form-control form-control-sm"
+                            style="width: 50px"
+                          />
 
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                        >
-                          <i class="fas fa-plus"></i>
-                        </button>
-                      </div>
-                    </td>
-                    <td class="align-middle">
-                      <p class="mb-0" style="font-weight: 500">$9.99</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-bottom-0">
-                      <div class="d-flex align-items-center">
-                        <img
-                          src="https://i.imgur.com/Oj1iQUX.webp"
-                          class="img-fluid rounded-3"
-                          style="width: 120px"
-                          alt="Book"
-                        />
-                        <div class="flex-column ms-4">
-                          <p class="mb-2">
-                            Homo Deus: A Brief History of Tomorrow
-                          </p>
-                          <p class="mb-0">Yuval Noah Harari</p>
+                          <button
+                            class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                          >
+                            <i class="fas fa-plus"></i>
+                          </button>
                         </div>
-                      </div>
-                    </th>
-                    <td class="align-middle border-bottom-0">
-                      <p class="mb-0" style="font-weight: 500">Paperback</p>
-                    </td>
-                    <td class="align-middle border-bottom-0">
-                      <div class="d-flex flex-row">
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                        >
-                          <i class="fas fa-minus"></i>
-                        </button>
+                      </td>
+                      <td class="align-middle">
+                        <p class="mb-0" style="font-weight: 500">R${{item.preco}}</p>
+                      </td>
+                    </tr>
 
-                        <input
-                          id="form1"
-                          min="0"
-                          name="quantity"
-                          value="1"
-                          type="number"
-                          class="form-control form-control-sm"
-                          style="width: 50px"
-                        />
+                  }
 
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                        >
-                          <i class="fas fa-plus"></i>
-                        </button>
-                      </div>
-                    </td>
-                    <td class="align-middle border-bottom-0">
-                      <p class="mb-0" style="font-weight: 500">$13.50</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-bottom-0">
-                      <div class="d-flex align-items-center">
-                        <img
-                          src="https://i.imgur.com/Oj1iQUX.webp"
-                          class="img-fluid rounded-3"
-                          style="width: 120px"
-                          alt="Book"
-                        />
-                        <div class="flex-column ms-4">
-                          <p class="mb-2">
-                            Homo Deus: A Brief History of Tomorrow
-                          </p>
-                          <p class="mb-0">Yuval Noah Harari</p>
-                        </div>
-                      </div>
-                    </th>
-                    <td class="align-middle border-bottom-0">
-                      <p class="mb-0" style="font-weight: 500">Paperback</p>
-                    </td>
-                    <td class="align-middle border-bottom-0">
-                      <div class="d-flex flex-row">
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                        >
-                          <i class="fas fa-minus"></i>
-                        </button>
-
-                        <input
-                          id="form1"
-                          min="0"
-                          name="quantity"
-                          value="1"
-                          type="number"
-                          class="form-control form-control-sm"
-                          style="width: 50px"
-                        />
-
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                        >
-                          <i class="fas fa-plus"></i>
-                        </button>
-                      </div>
-                    </td>
-                    <td class="align-middle border-bottom-0">
-                      <p class="mb-0" style="font-weight: 500">$13.50</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-bottom-0">
-                      <div class="d-flex align-items-center">
-                        <img
-                          src="https://i.imgur.com/Oj1iQUX.webp"
-                          class="img-fluid rounded-3"
-                          style="width: 120px"
-                          alt="Book"
-                        />
-                        <div class="flex-column ms-4">
-                          <p class="mb-2">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Commodi reprehenderit necessitatibus, magni
-                            in, totam repellendus eius sapiente molestiae
-                            asperiores quas temporibus. Iste blanditiis itaque
-                            quo consectetur excepturi officia at repudiandae.
-                          </p>
-                          <p class="mb-0">Yuval Noah Harari</p>
-                        </div>
-                      </div>
-                    </th>
-                    <td class="align-middle border-bottom-0">
-                      <p class="mb-0" style="font-weight: 500">Paperback</p>
-                    </td>
-                    <td class="align-middle border-bottom-0">
-                      <div class="d-flex flex-row">
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                        >
-                          <i class="fas fa-minus"></i>
-                        </button>
-
-                        <input
-                          id="form1"
-                          min="0"
-                          name="quantity"
-                          value="1"
-                          type="number"
-                          class="form-control form-control-sm"
-                          style="width: 50px"
-                        />
-
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                        >
-                          <i class="fas fa-plus"></i>
-                        </button>
-                      </div>
-                    </td>
-                    <td class="align-middle border-bottom-0">
-                      <p class="mb-0" style="font-weight: 500">$13.50</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-bottom-0">
-                      <div class="d-flex align-items-center">
-                        <img
-                          src="https://i.imgur.com/Oj1iQUX.webp"
-                          class="img-fluid rounded-3"
-                          style="width: 120px"
-                          alt="Book"
-                        />
-                        <div class="flex-column ms-4">
-                          <p class="mb-2">
-                            Homo Deus: A Brief History of Tomorrow
-                          </p>
-                          <p class="mb-0">Yuval Noah Harari</p>
-                        </div>
-                      </div>
-                    </th>
-                    <td class="align-middle border-bottom-0">
-                      <p class="mb-0" style="font-weight: 500">Paperback</p>
-                    </td>
-                    <td class="align-middle border-bottom-0">
-                      <div class="d-flex flex-row">
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                        >
-                          <i class="fas fa-minus"></i>
-                        </button>
-
-                        <input
-                          id="form1"
-                          min="0"
-                          name="quantity"
-                          value="1"
-                          type="number"
-                          class="form-control form-control-sm"
-                          style="width: 50px"
-                        />
-
-                        <button
-                          class="btn btn-link px-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                        >
-                          <i class="fas fa-plus"></i>
-                        </button>
-                      </div>
-                    </td>
-                    <td class="align-middle border-bottom-0">
-                      <p class="mb-0" style="font-weight: 500">$13.50</p>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -366,7 +162,7 @@
   <div id="footer" class="p-3">
     <div class="row mx-3">
       <div class="col col-6">
-        <a class="button1"> <strong>Cancelar</strong></a>
+        <a class="button1" (click)="cleanCart()"> <strong>Cancelar</strong></a>
       </div>
       <div class="col col-6">
         <a class="button2"><strong>Feito!</strong></a>

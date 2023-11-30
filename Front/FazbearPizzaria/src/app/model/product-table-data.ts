@@ -1,9 +1,11 @@
 import { _Bottom } from "@angular/cdk/scrolling";
 
-export interface ProductTableData {
-  name: string;
-  type: string;
-  price: number;
-  description: string;
+export interface CartData {
+  id: number
+  nome: string;
+  tipo: string;
+  preco: number;
+  descricao: string;
+  quantity: number;
   imageId: number;
 }

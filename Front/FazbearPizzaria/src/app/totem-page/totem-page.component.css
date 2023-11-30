@@ -87,6 +87,7 @@ a.button1 {
   transition: all 0.2s;
 }
 a.button1:hover {
+  cursor:pointer;
   color: #ffffff;
   background-color: #b61f1f;
 }
@@ -115,6 +116,7 @@ a.button2 {
 }
 
 a.button2:hover {
+  cursor:pointer;
   color: #ffffff;
   background-color: #167e38;
 }

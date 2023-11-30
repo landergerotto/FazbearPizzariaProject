@@ -57,9 +57,10 @@ export class TotemPageComponent implements OnInit {
     var data = JSON.parse(storedData)
     data.forEach((item : CartData )=> {
       if (item.id == id)
-        item.id += 1;
+        item.quantidade += 1;
     console.log(data)
-      // localStorage.setItem('cart', JSON.stringify(data))
+    this.cart = data;
+    localStorage.setItem('cart', JSON.stringify(data))
     });
   }
 

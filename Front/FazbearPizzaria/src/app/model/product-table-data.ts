@@ -6,6 +6,6 @@ export interface CartData {
   tipo: string;
   preco: number;
   descricao: string;
-  quantity: number;
+  quantidade: number;
   imageId: number;
 }

@@ -44,7 +44,7 @@ public class ProductController : ControllerBase
     {
         var errors = new List<string>();
         if (prod is null || prod.Name is null)
-            errors.Add("É necessário informar um login.");
+            errors.Add("É necessário informar um nome ao produto.");
 
         if (errors.Count > 0)
             return BadRequest(errors);

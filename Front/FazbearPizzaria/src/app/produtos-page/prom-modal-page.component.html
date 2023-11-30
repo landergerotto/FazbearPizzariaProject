@@ -8,8 +8,8 @@
       <mat-form-field>
         <mat-label>Selecione o Produto</mat-label>
         <mat-select>
-          @for (food of foods; track food) {
-          <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+          @for (item of prodList; track item.id) {
+          <mat-option [value]="item.id">{{ item.nome }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
@@ -17,6 +17,6 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-button>Log in</button>
+    <button mat-button>Cadastrar</button>
   </mat-card-actions>
 </mat-card>

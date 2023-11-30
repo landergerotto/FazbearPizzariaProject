@@ -43,8 +43,6 @@ export class ProdutosPageComponent implements OnInit {
   cadProd()
   {
     this.dialog.open(ProdDialog);
-    console.log(this.list)
-
   }
 
   cadProm()
@@ -101,20 +99,20 @@ interface Food {
   templateUrl: './prom-modal-page.component.html',
   styleUrl: './produtos-page.component.css'
 })
-export class PromDialog
+export class PromDialog implements OnInit
 {
-  // name: string = ""
-  // type: string = ""
-  // price: number = 0
-  // description : string = "";
+  prodList : any
 
   constructor(public dialogRef: MatDialogRef<PromDialog>,
     private client: ClientServiceService
     ) {}
 
-    foods: Food[] = [
-      {value: 'steak-0', viewValue: 'Steak'},
-      {value: 'pizza-1', viewValue: 'Pizza'},
-      {value: 'tacos-2', viewValue: 'Tacos'},
-    ];
+  ngOnInit(): void {
+    var storedData = localStorage.getItem('prodList');
+    if (storedData === null)
+      return;
+    var data = (JSON.parse(storedData))
+    this.prodList = data
+  }
+
 }

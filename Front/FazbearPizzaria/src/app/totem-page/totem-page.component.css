@@ -44,6 +44,19 @@ strong {
   color: white;
 }
 
+a.menuItem {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.menuItem:hover, menuItem:visited, menuItem:link, menuItem:active {
+  cursor:pointer;
+}
+
+.img-fluid.rounded-3 {
+  width: 100px;
+}
+
 .card.scroll {
   overflow-y: auto !important;
 

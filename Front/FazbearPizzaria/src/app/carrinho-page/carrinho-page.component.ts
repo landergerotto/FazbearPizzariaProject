@@ -20,7 +20,7 @@ export class CarrinhoPageComponent implements OnInit {
   cart : CartData[] = [];
   totalPrice : number = 0;
   cupom: string = 'a';
-
+  discount: number = 0;
   constructor(
     private router: Router,
     private service: CupomService
@@ -94,7 +94,8 @@ export class CarrinhoPageComponent implements OnInit {
       desconto: 0
     })
       .subscribe( (data) => {
-        console.log(data);
+        this.discount = parseFloat(<string>data);
+        console.log(this.discount);
       });
   }
 

@@ -53,5 +53,6 @@ create table ProdutosPedidos (
 	ID int identity primary key,
 	ProdutoID int references Produto(ID),
 	PedidoID int references Pedido(ID),
-	PromocaoID int references Promocao(ID)
+	PromocaoID int references Promocao(ID),
+	Quantidade int not null,
 )

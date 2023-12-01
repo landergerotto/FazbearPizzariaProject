@@ -13,6 +13,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { ProductService } from '../services/product.service';
 import { InitProductService } from '../services/init-product.service';
+import { CupomService } from '../services/cupom.service';
 
 @Component({
   selector: 'app-produtos-page',
@@ -47,9 +48,12 @@ export class ProdutosPageComponent implements OnInit {
   cadProm()
   {
     this.dialog.open(PromDialog);
-
   }
 
+  cadCupom()
+  {
+    this.dialog.open(CupomDialog);
+  }
 }
 @Component({
   selector: 'app-produtos-page',
@@ -108,6 +112,38 @@ export class PromDialog implements OnInit
       return;
     var data = (JSON.parse(storedData))
     this.prodList = data
+  }
+
+  create () {
+    console.log()
+  }
+
+}
+
+@Component({
+  selector: 'app-produtos-page',
+  standalone: true,
+  imports: [CommonModule, MatTabsModule, MatCardModule, MatButtonModule,
+    FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule],
+  templateUrl: './cupom-modal-page.component.html',
+  styleUrl: './produtos-page.component.css'
+})
+export class CupomDialog
+{
+  codigo: string = "";
+  desconto: number = 0;
+
+  constructor(public dialogRef: MatDialogRef<CupomDialog>,
+    private cup: CupomService
+    ) {}
+
+  create () {
+    this.cup.registerCupom({
+      codigo: this.codigo,
+      desconto: this.desconto,
+    })
+
+    this.dialogRef.close()
   }
 
 }

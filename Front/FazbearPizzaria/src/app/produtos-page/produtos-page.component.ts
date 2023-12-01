@@ -14,6 +14,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { ProductService } from '../services/product.service';
 import { InitProductService } from '../services/init-product.service';
 import { CupomService } from '../services/cupom.service';
+import { ProductData } from '../model/product-data';
+import { CartData } from '../model/product-table-data';
+import { PromotionService } from '../services/promotion.service';
 
 @Component({
   selector: 'app-produtos-page',
@@ -101,9 +104,11 @@ export class ProdDialog
 export class PromDialog implements OnInit
 {
   prodList : any
+  selected = 0;
+  price : number = 22;
 
   constructor(public dialogRef: MatDialogRef<PromDialog>,
-    private client: ClientServiceService
+    private prom: PromotionService
     ) {}
 
   ngOnInit(): void {
@@ -114,8 +119,21 @@ export class PromDialog implements OnInit
     this.prodList = data
   }
 
+  updatePrice( event : any ) {
+    var id = event.value
+    this.prodList.forEach(( item: CartData) => {
+      if (item.id == id)
+        this.price = item.preco;
+    });
+
+  }
+
   create () {
-    console.log()
+    this.prom.registerProm({
+      produtoID: this.selected,
+      preco: this.price,
+    })
+    console.log(typeof(this.selected))
   }
 
 }
@@ -132,7 +150,6 @@ export class CupomDialog
 {
   codigo: string = "";
   desconto: number = 0;
-
   constructor(public dialogRef: MatDialogRef<CupomDialog>,
     private cup: CupomService
     ) {}
@@ -142,7 +159,7 @@ export class CupomDialog
       codigo: this.codigo,
       desconto: this.desconto,
     })
-
+    // alert('deu bom po')
     this.dialogRef.close()
   }
 

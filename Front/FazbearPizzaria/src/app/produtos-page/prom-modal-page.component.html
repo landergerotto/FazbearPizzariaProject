@@ -7,16 +7,22 @@
     <form class="example-form">
       <mat-form-field>
         <mat-label>Selecione o Produto</mat-label>
-        <mat-select>
+        <mat-select [(value)]="selected" (selectionChange)="updatePrice($event)">
           @for (item of prodList; track item.id) {
           <mat-option [value]="item.id">{{ item.nome }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Preço</mat-label>
+        <input matInput type="number" [(ngModel)]="price" placeholder="{{price}}" name="preco" >
+      </mat-form-field>
     </form>
+    <p>{{selected}}</p>
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-button>Cadastrar</button>
+    <button mat-button (click)="create()">Cadastrar</button>
   </mat-card-actions>
 </mat-card>

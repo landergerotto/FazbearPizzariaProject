@@ -26,11 +26,6 @@ public class CupomService : ICupomService
         this.ctx.Add(cupom);
         await this.ctx.SaveChangesAsync();
     }
-    public async Task<List<Produto>> GetProdutos()
-        => await this.ctx.Produtos.ToListAsync();
-
-    public Task<List<Produto>> GetCupons()
-    {
-        throw new System.NotImplementedException();
-    }
+    public async Task<List<Cupom>> GetCupons()
+        => await this.ctx.Cupoms.ToListAsync();
 }

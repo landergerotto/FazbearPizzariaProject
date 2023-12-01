@@ -9,7 +9,7 @@ public partial class Promocao
 
     public int? ProdutoId { get; set; }
 
-    public int Preco { get; set; }
+    public double? Preco { get; set; }
 
     public virtual Produto Produto { get; set; }
 

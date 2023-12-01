@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using DTO;
 using Model;
 
-public interface ICupomService
+public interface IPromotionService
 {
-    Task Create(CupomData data);
-    Task<List<Cupom>> GetCupons();
+    Task Create(PromotionData data);
+    Task<List<Promocao>> GetPromotions();
 
 }

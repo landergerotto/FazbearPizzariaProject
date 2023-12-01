@@ -40,7 +40,7 @@ public class UserController : ControllerBase
         var realPassword = loggedUser.Senha;
         if (password != realPassword)
             return Unauthorized("Senha incorreta.");
-        
+
         var jwt = crypto.GetToken(new {
             id = loggedUser.Id,
             photoId = loggedUser.ImagemId,

@@ -13,6 +13,8 @@ public partial class ProdutosPedido
 
     public int? PromocaoId { get; set; }
 
+    public int Quantidade { get; set; }
+
     public virtual Pedido Pedido { get; set; }
 
     public virtual Produto Produto { get; set; }

@@ -37,12 +37,24 @@ export class TotemPageComponent implements OnInit {
         this.prodList = data;
         localStorage.setItem('prodList', JSON.stringify(this.prodList))
       });
+      var storedData = localStorage.getItem('cart');
+      if (storedData == null) {
+        return
+      }
+      this.cart = JSON.parse(storedData);
       console.log(this.cart)
     // localStorage.setItem('cart', JSON.stringify(this.cart))
   }
 
   cartAddItem(item : any) {
     // TALVEZ PRECISE DE MAIS IMPLEMENTACAO!!
+    var count = 0;
+    this.cart.forEach ( (obj : CartData) => {
+      if (obj.id == item.id)
+        count = 1;
+    })
+    if (count == 1)
+      return;
     this.cart.push(item);
     localStorage.setItem('cart', JSON.stringify(this.cart))
     // this.router.navigate(['totem']);
@@ -55,7 +67,7 @@ export class TotemPageComponent implements OnInit {
     if (storedData == null)
         return;
     var data = JSON.parse(storedData)
-    data.forEach((item : CartData )=> {
+    data.forEach((item : CartData ) => {
       if (item.id == id)
         item.quantidade += 1;
     });
@@ -70,15 +82,21 @@ export class TotemPageComponent implements OnInit {
         return;
     var data = JSON.parse(storedData)
     data.forEach((item : CartData )=> {
-      if (item.id == id)
+      if (item.id == id) {
         item.quantidade -= 1;
-      if (item.quantidade == 0)
-        this.cartRemoveItem();
+        this.cart = data
+        localStorage.setItem('cart', JSON.stringify(data))
+      }
+      if (item.quantidade == 0) {
+       this.cartRemoveItem(id);
+      }
     });
+
   }
 
-  cartRemoveItem() {
-    
+  cartRemoveItem(id : number) {
+    this.cart = this.cart.filter( obj => {return obj.id !== id} );
+    localStorage.setItem('cart', JSON.stringify(this.cart))
   }
 
   cleanCart (){
@@ -89,6 +107,10 @@ export class TotemPageComponent implements OnInit {
     this.cart = JSON.parse(storedData)
     this.router.navigate(['totem']); // REDIRECIONAR PARA PRE-TOTEM
 
+  }
+
+  goToCart() {
+    this.router.navigate(['cart'])
   }
 
   confirmOpen( cart : CartData[])

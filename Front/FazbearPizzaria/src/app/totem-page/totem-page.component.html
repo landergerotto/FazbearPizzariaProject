@@ -125,7 +125,9 @@
                           >
                             <i class="fas fa-minus"></i>
                           </button>
-                          <button mat-raised-button color="warn">
+                          <button mat-raised-button
+                            color="warn"
+                            (click)="removeQuantity(item.id)">
                             -
                           </button>
                           <input
@@ -171,7 +173,7 @@
         <a class="button1" (click)="cleanCart()"> <strong>Cancelar</strong></a>
       </div>
       <div class="col col-6">
-        <a class="button2"><strong>Feito!</strong></a>
+        <a class="button2" (click)="goToCart()"><strong>Feito!</strong></a>
       </div>
     </div>
   </div>

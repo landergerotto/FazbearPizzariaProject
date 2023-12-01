@@ -4,7 +4,9 @@
   }
 }
 
-
+.img-fluid.rounded-3 {
+  width: 120px;
+}
 
 .scroll {
   overflow-y: auto !important;

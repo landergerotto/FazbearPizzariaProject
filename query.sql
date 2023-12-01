@@ -33,6 +33,7 @@ create table Produto (
 	Tipo varchar(25) not null,
 	Preco float not null,
 	Descricao varchar(MAX),
+	Quantidade int not null,
 	ImagemID int references Imagem(ID)
 )
 
@@ -55,4 +56,11 @@ create table ProdutosPedidos (
 	PedidoID int references Pedido(ID),
 	PromocaoID int references Promocao(ID),
 	Quantidade int not null,
+)
+
+create table Cupom (
+	ID int identity primary key,
+	Desconto float not null,
+	Codigo varchar(6) not null,
+
 )

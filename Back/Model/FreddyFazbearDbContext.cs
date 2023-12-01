@@ -15,6 +15,8 @@ public partial class FreddyFazbearDbContext : DbContext
     {
     }
 
+    public virtual DbSet<Cupon> Cupons { get; set; }
+
     public virtual DbSet<Imagem> Imagems { get; set; }
 
     public virtual DbSet<Pedido> Pedidos { get; set; }
@@ -33,6 +35,17 @@ public partial class FreddyFazbearDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Cupon>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Cupons__3214EC274093B14B");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Cupom)
+                .IsRequired()
+                .HasMaxLength(6)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<Imagem>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC2799ECEA9A");

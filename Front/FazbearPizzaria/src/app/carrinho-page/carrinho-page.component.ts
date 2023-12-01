@@ -14,7 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 export class CarrinhoPageComponent implements OnInit {
 
   cart : CartData[] = []
-  precoTotal : number = 0;
+  totalPrice : number = 0;
+
   constructor(
     private router: Router,
   ) { }
@@ -25,7 +26,10 @@ export class CarrinhoPageComponent implements OnInit {
         return;
     var data = JSON.parse(storedData)
     this.cart = data;
-    console.log(data)
+
+    this.updatePrice()
+
+    console.log(this.totalPrice)
   }
 
   addQuantity (id : number) {
@@ -40,6 +44,9 @@ export class CarrinhoPageComponent implements OnInit {
     console.log(data)
     this.cart = data;
     localStorage.setItem('cart', JSON.stringify(data))
+
+    this.updatePrice()
+
   }
 
   removeQuantity(id : number) {
@@ -57,7 +64,16 @@ export class CarrinhoPageComponent implements OnInit {
        this.cartRemoveItem(id);
       }
     });
+    this.updatePrice()
 
+  }
+
+  updatePrice() {
+    this.totalPrice = 0;
+    this.cart.forEach ( (obj : CartData) => {
+      this.totalPrice += obj.preco * obj.quantidade
+    })
+    this.totalPrice = parseFloat(this.totalPrice.toFixed(2));
   }
 
   cartRemoveItem(id : number) {

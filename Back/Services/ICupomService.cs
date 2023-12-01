@@ -9,6 +9,6 @@ using Model;
 public interface ICupomService
 {
     Task Create(CupomData data);
-    Task<List<Cupom>> GetCupons();
+    Task<Cupom> GetCupom(CupomData cupom);
 
 }

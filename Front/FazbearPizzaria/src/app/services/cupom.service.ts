@@ -9,6 +9,10 @@ export class CupomService {
 
 constructor(private http: ApiClientService) { }
 
+getDiscountByCode(code : CupomData) {
+  return this.http.post('cupom', code)
+}
+
 registerCupom(data: CupomData)
 {
   this.http.post('cupom/register', data)

@@ -8,7 +8,7 @@ import { ProductData } from '../model/product-data';
 export class ProductService {
 
   constructor(private http: ApiClientService) { }
-
+  
   registerProd(data: ProductData)
   {
     this.http.post('product/register', data)

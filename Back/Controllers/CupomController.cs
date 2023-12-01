@@ -21,19 +21,21 @@ using Trevisharp.Security.Jwt;
 public class CupomController : ControllerBase
 {
 
-    [HttpGet]
+    [HttpPost]
     [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> GetCumpons(
-        [FromServices]IProductService prodService)
+    public async Task<IActionResult> GetCupons(
+        [FromBody] CupomData cupom,
+        [FromServices]ICupomService cupService)
     {
-        var errors = new List<string>();
 
-        if (errors.Count > 0)
-            return BadRequest(errors);
 
-        var list = await prodService.GetProdutos();
+        var elcupom = await cupService.GetCupom(cupom);
+        if (elcupom is null)
+            return Ok( 0 );
 
-        return Ok( list );
+        var desconto = elcupom.Desconto;
+
+        return Ok( desconto );
     }
 
     [HttpPost("register")]

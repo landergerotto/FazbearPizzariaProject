@@ -14,10 +14,10 @@ export class ApiClientService {
       .get(this.backend + url)
   }
 
-  Uget(url: string, obj : any) {
-    return this.http
-      .get(this.backend + url)
-  }
+  // getByVar(url: string, obj : any) {
+  //   return this.http
+  //     .getByVar(this.backend + url, obj)
+  // }
 
   post(url: string, obj: any) {
     return this.http

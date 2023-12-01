@@ -105,7 +105,7 @@ export class PromDialog implements OnInit
 {
   prodList : any
   selected = 0;
-  price : number = 22;
+  price : number = 0;
 
   constructor(public dialogRef: MatDialogRef<PromDialog>,
     private prom: PromotionService

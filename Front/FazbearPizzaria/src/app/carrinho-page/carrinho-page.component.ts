@@ -1,3 +1,4 @@
+import { jwtDecode } from 'jwt-decode';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -7,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CupomService } from '../services/cupom.service';
+import { JwtService } from '../services/jwt.service';
 
 @Component({
   selector: 'app-carrinho-page',
@@ -15,15 +17,19 @@ import { CupomService } from '../services/cupom.service';
   templateUrl: './carrinho-page.component.html',
   styleUrl: './carrinho-page.component.css'
 })
+
 export class CarrinhoPageComponent implements OnInit {
 
   cart : CartData[] = [];
   totalPrice : number = 0;
   cupom: string = 'a';
   discount: number = 0;
+  str = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvcmdlIGtrIiwiaWF0IjoxNTE2MjM5MDIyfQ.cLZFecnonRNy817dqOMoTxgjmgafp4UzJjdTkpt6OVU'
+
   constructor(
     private router: Router,
-    private service: CupomService
+    private service: CupomService,
+    private jwt: JwtService
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +41,8 @@ export class CarrinhoPageComponent implements OnInit {
 
     this.updatePrice()
 
-    console.log(this.totalPrice)
+    var a = this.jwt.decodeJwt(this.str)
+    console.log(a.name);
   }
 
   addQuantity (id : number) {

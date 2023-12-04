@@ -13,8 +13,11 @@
               <div class="card h-100">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{item.nome}}</h5>
+                  <h5 class="card-text">{{item.id}}</h5>
+                  <h2 class="card-title">{{item.nome}}</h2>
                   <p class="card-text">{{item.descricao}}</p>
+                  <p class="card-text">R$ {{item.preco}} </p>
+
                 </div>
               </div>
             </div>
@@ -29,9 +32,23 @@
       <div class="text-center mb-4">
         <button mat-raised-button color="accent" (click)="cadProm()">Cadastrar</button>
       </div>
+      <div class="row row-cols-1 row-cols-md-4 g-2">
+        @for (item of promotions; track item.id) {
+          <div class="col">
+            <div class="card h-100">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h2 class="card-title">{{item.produtoId}}</h2>
+                <p class="card-text">R$ {{item.preco}} </p>
+
+              </div>
+            </div>
+          </div>
+        }
+      </div>
     </div>
   </mat-tab>
-  
+
   <mat-tab label="Cupom">
     <div class="col-5 mt-5 mx-auto">
       <div class="text-center mb-4">

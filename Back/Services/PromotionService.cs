@@ -29,8 +29,23 @@ public class PromotionService : IPromotionService
     public async Task<List<Produto>> GetProdutos()
         => await this.ctx.Produtos.ToListAsync();
         
-    public async Task<List<Promocao>> GetPromotions()
-        => await this.ctx.Promocaos.ToListAsync();
+    public async Task<List<PromoProdData>> GetPromotions() 
+    {
+        var query =
+            from prod in this.ctx.Produtos
+            join promo in this.ctx.Promocaos
+            on prod.Id equals promo.ProdutoId
+            select new PromoProdData
+            {
+                ProdutoId = prod.Id,
+                Nome =  prod.Nome,
+                Descricao = prod.Descricao,
+                Preco = promo.Preco
+            };
+        
+        return await query.ToListAsync();
+        // return await this.ctx.Promocaos.ToListAsync();
+    }
 
     
 }

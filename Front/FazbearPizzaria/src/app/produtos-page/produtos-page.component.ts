@@ -29,17 +29,26 @@ import { PromotionService } from '../services/promotion.service';
 export class ProdutosPageComponent implements OnInit {
 
   list : any
+  promotions: any
 
   constructor(
     public dialog: MatDialog,
-    private service: InitProductService
+    private inProdservice: InitProductService,
+    private promService: PromotionService
+
   ) { }
 
   ngOnInit() {
-    this.service.initProducts()
+    this.inProdservice.initProducts()
       .subscribe( (data) => {
         this.list = data;
         localStorage.setItem('prodList', JSON.stringify(this.list))
+      });
+      this.promService.getPromotion()
+      .subscribe( (data) => {
+        this.promotions = data;
+        console.log(this.promotions)
+        // localStorage.setItem('prodList', JSON.stringify(this.list))
       });
   }
 

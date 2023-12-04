@@ -9,6 +9,10 @@ export class PromotionService {
 
   constructor(private http: ApiClientService) { }
 
+  getPromotion () {
+    return this.http.get('promotion');
+  }
+
   registerProm(data: PromotionData)
   {
     this.http.post('promotion/register', data)

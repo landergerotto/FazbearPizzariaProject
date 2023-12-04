@@ -24,6 +24,9 @@ export class CarrinhoPageComponent implements OnInit {
   totalPrice : number = 0;
   cupom: string = 'a';
   discount: number = 0;
+  applied: boolean = false;
+  discPrice: number = 0
+  conta = this.totalPrice + this.totalPrice*this.discount
   str = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvcmdlIGtrIiwiaWF0IjoxNTE2MjM5MDIyfQ.cLZFecnonRNy817dqOMoTxgjmgafp4UzJjdTkpt6OVU'
 
   constructor(
@@ -87,6 +90,8 @@ export class CarrinhoPageComponent implements OnInit {
       this.totalPrice += obj.preco * obj.quantidade
     })
     this.totalPrice = parseFloat(this.totalPrice.toFixed(2));
+    this.discPrice = this.totalPrice;
+    this.applied = false;
   }
 
   cartRemoveItem(id : number) {
@@ -103,6 +108,12 @@ export class CarrinhoPageComponent implements OnInit {
       .subscribe( (data) => {
         this.discount = parseFloat(<string>data);
         console.log(this.discount);
+        if (!this.applied) {
+          this.discPrice = this.totalPrice * (1 - this.discount);
+          this.applied = !this.applied
+        }
+        console.log(this.discPrice);
+
       });
   }
 

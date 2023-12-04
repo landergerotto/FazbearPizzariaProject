@@ -245,8 +245,8 @@
                   class="d-flex justify-content-between mb-4"
                   style="font-weight: 500"
                 >
-                  <p class="mb-2">Total (tax included)</p>
-                  <p class="mb-2">$26.48</p>
+                  <p class="mb-2">Disconto: </p>
+                  <p class="mb-2">{{ discount }}%</p>
                 </div>
 
                 <button
@@ -255,7 +255,7 @@
                   (click)="goToTotem()"
                 >
                   <div class="d-flex justify-content-between">
-                    <span>Checkout: $26.48</span>
+                    <span>R${{ discPrice }}</span>
                   </div>
                 </button>
               </div>

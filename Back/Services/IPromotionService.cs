@@ -9,6 +9,6 @@ using Model;
 public interface IPromotionService
 {
     Task Create(PromotionData data);
-    Task<List<Promocao>> GetPromotions();
+    Task<List<PromoProdData>> GetPromotions();
 
 }

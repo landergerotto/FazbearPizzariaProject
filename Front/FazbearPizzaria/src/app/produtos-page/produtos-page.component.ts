@@ -42,13 +42,10 @@ export class ProdutosPageComponent implements OnInit {
     this.inProdservice.initProducts()
       .subscribe( (data) => {
         this.list = data;
-        localStorage.setItem('prodList', JSON.stringify(this.list))
       });
       this.promService.getPromotion()
       .subscribe( (data) => {
         this.promotions = data;
-        console.log(this.promotions)
-        // localStorage.setItem('prodList', JSON.stringify(this.list))
       });
   }
 

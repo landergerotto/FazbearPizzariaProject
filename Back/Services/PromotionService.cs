@@ -37,6 +37,7 @@ public class PromotionService : IPromotionService
             on prod.Id equals promo.ProdutoId
             select new PromoProdData
             {
+                PromoId = promo.Id,
                 ProdutoId = prod.Id,
                 Nome =  prod.Nome,
                 Descricao = prod.Descricao,

@@ -41,6 +41,7 @@ public class PromotionService : IPromotionService
                 PromoId = promo.Id,
                 Nome =  prod.Nome,
                 Descricao = prod.Descricao,
+                Tipo = prod.Tipo,
                 Preco = promo.Preco,
                 Quantidade = 1
             };

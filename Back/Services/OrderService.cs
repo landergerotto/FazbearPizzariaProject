@@ -13,7 +13,7 @@ using DTO;
 public class OrderService : IOrderService
 {
     FreddyFazbearDbContext ctx;
-
+    private int last_order;
     public OrderService(FreddyFazbearDbContext ctx)
         => this.ctx = ctx;
     public async Task CreateOrder(OrderData data)
@@ -26,6 +26,19 @@ public class OrderService : IOrderService
 
         this.ctx.Add(order);
         await this.ctx.SaveChangesAsync();
+
+        var orders = 
+            from orderL in this.ctx.Pedidos
+            select order;
+
+        var order_list = await orders.ToListAsync();
+        this.last_order = order_list.Count();
+
+        foreach (var item in data)
+        {
+            
+        }
+
     }
 
     public async Task CancelOrder(int order_id)

@@ -49,6 +49,6 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [ ] Pedidos podem ser vistos na tela de pedidos.
 - [ ] É possível editar um pedido como 'Entregue' de alguma forma.
 - [ ] Apenas os pedidos corretos aparecem na tela de pedidos (finalizados, porém não entregues).
-- [ ] Usuário é capaz de ver as promoções no sistema.
-- [ ] Usuário é capaz de gerar um código de promoção válido.
+- [X] Usuário é capaz de ver as promoções no sistema.
+- [X] Usuário é capaz de gerar um código de promoção válido.
 - [X] Sistema realmente válida código de promoção.

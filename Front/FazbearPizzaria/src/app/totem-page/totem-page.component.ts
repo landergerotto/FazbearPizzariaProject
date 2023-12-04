@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { PromotionService } from '../services/promotion.service';
 
 @Component({
   selector: 'app-totem-page',
@@ -22,21 +23,29 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class TotemPageComponent implements OnInit {
 
-  prodList: any
-  cart : CartData[] = []
-  emptyCart : CartData[] = []
+  prodList: any;
+  promoList: any;
+  cart : CartData[] = [];
+  emptyCart : CartData[] = [];
   constructor(
     public dialog: MatDialog,
-    private service: InitProductService,
+    private iProdservice: InitProductService,
+    private promService: PromotionService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.service.initProducts()
+    this.iProdservice.initProducts()
       .subscribe( (data) => {
         this.prodList = data;
         localStorage.setItem('prodList', JSON.stringify(this.prodList))
       });
+      this.promService.getPromotion()
+      .subscribe( (data) => {
+        this.promoList = data;
+        localStorage.setItem('promoList', JSON.stringify(this.promoList))
+      });
+
       var storedData = localStorage.getItem('cart');
       if (storedData == null) {
         return
@@ -50,8 +59,10 @@ export class TotemPageComponent implements OnInit {
     // TALVEZ PRECISE DE MAIS IMPLEMENTACAO!!
     var count = 0;
     this.cart.forEach ( (obj : CartData) => {
-      if (obj.id == item.id)
+      if (obj.id == item.id) {
         count = 1;
+        console.log('elp')
+      }
     })
     if (count == 1)
       return;
@@ -59,7 +70,6 @@ export class TotemPageComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.cart))
     // this.router.navigate(['totem']);
 
-    console.log('fofo')
   }
 
   addQuantity (id : number) {

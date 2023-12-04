@@ -63,6 +63,22 @@
         <div class="card h-100 bg-dark">
           <div class="card-body menu-dentro ms-3 me-4 my-3">
             <div class="row row-cols-1 row-cols-md-3 g-4">
+              @for (item of promoList; track item.id) {
+                <div class="col">
+                  <div class="boxheas">
+                    <a class="menuItem" (click)="cartAddItem(item)">
+                      <div class="card h-100 text-center">
+                        <h1 class="card-title">PROMOÇÃO!!</h1>
+                        <img src="..." class="card-img-top" alt="..." />
+                        <div class="card-body text-center">
+                          <h1 class="card-title">{{ item.nome }}</h1>
+                          <!-- <p class="card-text">{{ item.descricao }}</p> -->
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              }
               @for (item of prodList; track item.id) {
               <div class="col">
                 <div class="boxheas">
@@ -98,7 +114,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @for(item of cart; track cart) {
+                  @for(item of cart; track item) {
                   <tr>
                     <th scope="row">
                       <div class="d-flex align-items-center">

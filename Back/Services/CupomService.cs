@@ -26,6 +26,16 @@ public class CupomService : ICupomService
         this.ctx.Add(cupom);
         await this.ctx.SaveChangesAsync();
     }
+
+    public async Task<List<Cupom>> GetAllCupons()
+    {
+        var query =
+            from c in this.ctx.Cupoms
+            select c;
+        
+        return await query.ToListAsync();
+    }
+
     public async Task<Cupom> GetCupom(CupomData cupom) 
     {
         var query =

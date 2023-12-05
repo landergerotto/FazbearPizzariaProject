@@ -10,14 +10,14 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] Porjeto do Frontend Angular Criado.
 - [X] Possui tela de Login.
 - [X] Possui tela de cadastro.
-- [ ] Possui tela de usuário normal das promoções.
-- [ ] Possui tela para visualizar código da promoção.
+- [X] Possui tela de usuário normal das promoções.
+- [X] Possui tela para visualizar código da promoção.
 - [X] Possui tela de Administrador.
 - [X] Possui tela de Pedidos.
 - [X] Possui tela de Cadastro de Produtos.
 - [X] Possui tela de Cadastro de Promoções.
 - [X] Possui tela do totem.
-- [ ] Possui tela dos gráficos.
+- [X] Possui tela dos gráficos.
 - [X] Tela do totem tem interface para inserção de código da promoção.
 - [X] Tela do totem tem interface para colocar itens na sacola.
 - [X] Banco de dados criado com tabelas de Usuário, Pedido, ItemPedido, Produto, Promoção ou similar.

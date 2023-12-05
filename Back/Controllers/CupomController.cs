@@ -21,6 +21,15 @@ using Trevisharp.Security.Jwt;
 public class CupomController : ControllerBase
 {
 
+    [HttpGet]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetAllCupons(
+        [FromServices]ICupomService cupService)
+    {
+        var cupons = await cupService.GetAllCupons();
+
+        return Ok( cupons );
+    }
     [HttpPost]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> GetCupons(

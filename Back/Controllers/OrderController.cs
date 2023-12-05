@@ -23,11 +23,11 @@ public class OrderController : ControllerBase
     [HttpPost("register")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> Create(
-        [FromBody]OrderData data,
+        [FromBody]OrderData[] data,
         [FromServices]IOrderService orderService)
     {
         var errors = new List<string>();
-        if (data is null || data.PedidoId == 0)
+        if (data is null || !data.Any())
             errors.Add("É necessário informar um Pedido.");
 
         if (errors.Count > 0)

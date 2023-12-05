@@ -16,13 +16,13 @@ public class OrderService : IOrderService
     private int last_order;
     public OrderService(FreddyFazbearDbContext ctx)
         => this.ctx = ctx;
-    public async Task CreateOrder(OrderData data)
+    public async Task CreateOrder(OrderData[] data)
     {
         var order = new Pedido();
 
         order.Preparado = false;
         order.Entregue = false;
-        order.PrecoTotal = data.PrecoTotal;
+        order.PrecoTotal = data[0].PrecoTotal;
 
         this.ctx.Add(order);
         await this.ctx.SaveChangesAsync();

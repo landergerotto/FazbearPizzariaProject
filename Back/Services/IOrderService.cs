@@ -8,7 +8,7 @@ using Model;
 
 public interface IOrderService
 {
-    Task CreateOrder(OrderData data);
+    Task CreateOrder(OrderData[] data);
     Task CancelOrder(int order_id);
     Task AddItem (int order_id, OrderData data);
     Task PreparedOrder (int order_id);

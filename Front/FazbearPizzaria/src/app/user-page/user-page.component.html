@@ -1,1 +1,72 @@
-<p>user-page works!</p>
+<mat-tab-group class="mt-5">
+
+  <mat-tab label="Promoções">
+    <div class="col-7 mt-5 mx-auto">
+
+
+      <div>
+        <div class="row row-cols-1 row-cols-md-4 g-2">
+          @for (item of promotions; track item.id) {
+            <div class="col">
+              <div class="card h-100">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-text">{{item.id}}</h5>
+                  <h2 class="card-title">{{item.nome}}</h2>
+                  <p class="card-text">{{item.descricao}}</p>
+                  <p class="card-text">R$ {{item.preco}} </p>
+
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Produto">
+    <div class="col-7 mt-5 mx-auto">
+
+      <div class="row row-cols-1 row-cols-md-4 g-2">
+        @for (item of list; track item.id) {
+          <div class="col">
+            <div class="card h-100">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">{{item.produtoId}}</p>
+                <h2 class="card-title">{{item.nome}} </h2>
+
+                <p class="card-text">R$ {{item.preco}} </p>
+
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Cupom">
+    <div class="col-7 mt-5 mx-auto">
+
+      <div class="row row-cols-1 row-cols-md-4 g-2">
+        @for (item of cupons; track item.id) {
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <h2 class="card-title">{{item.codigo}} </h2>
+
+                <p class="card-text">Desconto: {{100 * item.desconto}}%</p>
+
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+  </mat-tab>
+
+  <mat-tab label="Dashboard"> Content 4 </mat-tab>
+</mat-tab-group>

@@ -10,5 +10,6 @@ public interface ICupomService
 {
     Task Create(CupomData data);
     Task<Cupom> GetCupom(CupomData cupom);
+    Task<List<Cupom>> GetAllCupons();
 
 }

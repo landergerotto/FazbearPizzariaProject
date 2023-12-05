@@ -42,7 +42,7 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [ ] Gráficos do Dashboard realmente refletem os dados no banco.
 - [X] É possível ver produtos existentes no Totem.
 - [X] É possível adicionar itens em uma sacola.
-- [ ] Ao finalizar a compra o pedido é realmente registrado no banco de dados.
+- [X] Ao finalizar a compra o pedido é realmente registrado no banco de dados.
 - [X] É possível ver o custo total do pedido.
 - [X] É possível adicionar uma promoção com um código promocional.
 - [X] Promoção afeta o custo total do pedido.

@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CupomService } from '../services/cupom.service';
 import { JwtService } from '../services/jwt.service';
+import { OrderService } from '../services/order.service';
+import { OrderData } from '../model/order-data';
 
 @Component({
   selector: 'app-carrinho-page',
@@ -25,13 +27,14 @@ export class CarrinhoPageComponent implements OnInit {
   cupom: string = 'a';
   discount: number = 0;
   applied: boolean = false;
-  discPrice: number = 0
+  discPrice: number = 0;
   conta = this.totalPrice + this.totalPrice*this.discount
   str = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvcmdlIGtrIiwiaWF0IjoxNTE2MjM5MDIyfQ.cLZFecnonRNy817dqOMoTxgjmgafp4UzJjdTkpt6OVU'
 
   constructor(
     private router: Router,
-    private service: CupomService,
+    private cupService: CupomService,
+    private orderService: OrderService,
     private jwt: JwtService
   ) { }
 
@@ -101,7 +104,7 @@ export class CarrinhoPageComponent implements OnInit {
 
   applyCupom() {
     console.log(this.cupom)
-    this.service.getDiscountByCode({
+    this.cupService.getDiscountByCode({
       codigo: this.cupom,
       desconto: 0
     })
@@ -115,6 +118,25 @@ export class CarrinhoPageComponent implements OnInit {
         console.log(this.discPrice);
 
       });
+  }
+
+  createOrder(cart: CartData[]) {
+
+    var list: OrderData[] = [];
+
+    this.cart.forEach( (item) => {
+      // console.log(obj.produtoId)
+      list.push({
+        precoTotal: this.discPrice,
+        pedidoId: 0,
+        produtoId: item.id,
+        quantidade: item.quantidade,
+      })
+
+    })
+    console.log(list)
+
+    this.orderService.registerOrder(list);
   }
 
   goToTotem()

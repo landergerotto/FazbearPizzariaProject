@@ -20,6 +20,16 @@ using Trevisharp.Security.Jwt;
 [Route("order")]
 public class OrderController : ControllerBase
 {
+    [HttpGet]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetAllOrders(
+
+        [FromServices]IOrderService orderService)
+    {
+        await orderService.GetOrders();
+        return Ok();
+    }
+
     [HttpPost("register")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> Create(

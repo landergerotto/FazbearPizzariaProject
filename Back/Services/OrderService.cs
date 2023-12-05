@@ -109,4 +109,45 @@ public class OrderService : IOrderService
 
         return await orders.FirstOrDefaultAsync();
     }
+
+    public async Task<List<KitchenData>> GetOrders()
+    {
+        // var order_query =
+        //     from orders in this.ctx.Pedidos
+        //     select orders;
+
+        // var nOfOrders = await order_query.ToListAsync();
+
+        var query1 =
+            from produtosPedidos in this.ctx.ProdutosPedidos
+            join prod in this.ctx.Produtos
+                on produtosPedidos.ProdutoId equals prod.Id into ppj
+            from pp in ppj.DefaultIfEmpty()
+            group produtosPedidos by produtosPedidos.PedidoId into grouped
+            select new {
+                OrderId = grouped.Key,
+                NumOfOrders = grouped.Count()
+            };
+
+        var a = await query1.ToListAsync();
+        System.Console.WriteLine(a[0].OrderId);
+
+        //  var query =
+        //     from prod in this.ctx.Produtos
+        //     join promo in this.ctx.Promocaos
+        //     on prod.Id equals promo.ProdutoId
+        //     select new PromoProdData
+        //     {
+        //         Id = prod.Id,
+        //         PromoId = promo.Id,
+        //         Nome =  prod.Nome,
+        //         Descricao = prod.Descricao,
+        //         Tipo = prod.Tipo,
+        //         Preco = promo.Preco,
+        //         Quantidade = 1
+        //     };
+
+
+        return null;
+    }
 }

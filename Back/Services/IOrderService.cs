@@ -13,5 +13,6 @@ public interface IOrderService
     Task AddItem (int order_id, OrderData data);
     Task PreparedOrder (int order_id);
     Task FinishOrder (int order_id);
+    Task<List<KitchenData>> GetOrders();
 
 }

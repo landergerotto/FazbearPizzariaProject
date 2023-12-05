@@ -126,26 +126,29 @@ public class OrderService : IOrderService
             group produtosPedidos by produtosPedidos.PedidoId into grouped
             select new {
                 OrderId = grouped.Key,
-                NumOfOrders = grouped.Count()
             };
 
         var a = await query1.ToListAsync();
         System.Console.WriteLine(a[0].OrderId);
 
-        //  var query =
-        //     from prod in this.ctx.Produtos
-        //     join promo in this.ctx.Promocaos
-        //     on prod.Id equals promo.ProdutoId
-        //     select new PromoProdData
-        //     {
-        //         Id = prod.Id,
-        //         PromoId = promo.Id,
-        //         Nome =  prod.Nome,
-        //         Descricao = prod.Descricao,
-        //         Tipo = prod.Tipo,
-        //         Preco = promo.Preco,
-        //         Quantidade = 1
-        //     };
+        List<KitchenData> list = new();
+
+        foreach (var item in a)
+        {
+            var query = 
+                from prodPed in this.ctx.ProdutosPedidos
+                join prod in this.ctx.Produtos
+                    on prodPed.ProdutoId equals prod.Id into prodGroup
+                from prod in prodGroup.DefaultIfEmpty()
+                where prodPed.PedidoId == item.OrderId
+                select new {
+                    Nome = prod.Nome,
+                    Quantidade = prodPed.Quantidade
+                };
+            var b = await query.ToListAsync();
+            string[] Nomes = b.Select(x=>x.Nome).ToArray();
+
+        }
 
 
         return null;

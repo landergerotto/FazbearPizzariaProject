@@ -128,26 +128,56 @@ public class OrderService : IOrderService
                 OrderId = grouped.Key,
             };
 
-        var a = await query1.ToListAsync();
+        var query777777 =
+            from ped in this.ctx.Pedidos
+            join prodPed in this.ctx.ProdutosPedidos
+                on ped.Id equals prodPed.PedidoId
+            join prod in this.ctx.Produtos
+                on prodPed.ProdutoId equals prod.Id
+            select new
+            {
+                OrderId = ped.Id,
+                ProdName = prod.Nome,
+                Quantidade = prodPed.Quantidade
+            };
+
+        var a = await query777777.ToListAsync();
+
+        var orders = 
+            from peds in a
+            group peds by peds.OrderId into grouped
+            select new {
+                OrderId = grouped.Key
+            };
+
+        var c = orders.ToList();
+
+
         System.Console.WriteLine(a[0].OrderId);
 
         List<KitchenData> list = new();
 
-        foreach (var item in a)
+        foreach (var item in c)
         {
             var query = 
-                from prodPed in this.ctx.ProdutosPedidos
-                join prod in this.ctx.Produtos
-                    on prodPed.ProdutoId equals prod.Id into prodGroup
-                from prod in prodGroup.DefaultIfEmpty()
-                where prodPed.PedidoId == item.OrderId
+                from member in a
+                where member.OrderId == item.OrderId
                 select new {
-                    Nome = prod.Nome,
-                    Quantidade = prodPed.Quantidade
+                    Nome = member.ProdName,
+                    Quantidade = member.Quantidade
                 };
-            var b = await query.ToListAsync();
-            string[] Nomes = b.Select(x=>x.Nome).ToArray();
 
+            var b = query.ToList();
+            string[] Nomes = b.Select(x=>x.Nome).ToArray();
+            int[] qtds = b.Select(x=>x.Quantidade).ToArray();
+
+            KitchenData kd = new()
+            {
+                OrderID = item.OrderId,
+                ProductName = Nomes,
+                Quantity = qtds
+            };
+            list.Add(kd);
         }
 
 

@@ -26,8 +26,8 @@ public class OrderController : ControllerBase
 
         [FromServices]IOrderService orderService)
     {
-        await orderService.GetOrders();
-        return Ok();
+        var orders = await orderService.GetOrders();
+        return Ok( orders );
     }
 
     [HttpPost("register")]

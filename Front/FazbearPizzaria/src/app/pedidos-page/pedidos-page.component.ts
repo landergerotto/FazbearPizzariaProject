@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { KitchenData } from '../model/kitchen-data';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-pedidos-page',
@@ -17,17 +18,18 @@ export class PedidosPageComponent implements OnInit {
 
   orders: KitchenData[] = [];
 
-
   constructor (
     private orderService: OrderService,
     private router: Router
   ) { }
+  private pollInterval = 10000; // 10 second
 
   ngOnInit(): void {
-    this.orderService.getAllOrders()
-      .subscribe( (data: any) => {
-        this.orders = data;
-        console.log(this.orders)
+    timer(0, this.pollInterval).subscribe(() => {
+      this.orderService.getAllOrders()
+        .subscribe( (data: any) => {
+          this.orders = data;
+      })
     })
   }
 
@@ -51,14 +53,4 @@ export class PedidosPageComponent implements OnInit {
 
   }
 
-  reloadComponent(self:boolean,urlToNavigateTo ?:string){
-    //skipLocationChange:true means dont update the url to / when navigating
-   console.log("Current route I am on:",this.router.url);
-   const url=self ? this.router.url :urlToNavigateTo;
-   this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
-     this.router.navigate([`/${url}`]).then(()=>{
-       console.log(`After navigation I am on:${this.router.url}`)
-     })
-   })
- }
 }

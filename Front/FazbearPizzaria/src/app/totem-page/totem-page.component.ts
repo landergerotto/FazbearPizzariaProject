@@ -38,12 +38,11 @@ export class TotemPageComponent implements OnInit {
     this.iProdservice.initProducts()
       .subscribe( (data) => {
         this.prodList = data;
-        localStorage.setItem('prodList', JSON.stringify(this.prodList))
       });
       this.promService.getPromotion()
       .subscribe( (data) => {
         this.promoList = data;
-        localStorage.setItem('promoList', JSON.stringify(this.promoList))
+
       });
 
       var storedData = localStorage.getItem('cart');
@@ -120,6 +119,8 @@ export class TotemPageComponent implements OnInit {
   }
 
   goToCart() {
+    if (this.cart.length == 0)
+      return
     this.router.navigate(['cart'])
   }
 

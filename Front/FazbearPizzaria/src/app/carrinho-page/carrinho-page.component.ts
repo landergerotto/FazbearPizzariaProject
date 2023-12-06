@@ -24,12 +24,10 @@ export class CarrinhoPageComponent implements OnInit {
 
   cart : CartData[] = [];
   totalPrice : number = 0;
-  cupom: string = 'a';
+  cupom: string = '';
   discount: number = 0;
   applied: boolean = false;
   discPrice: number = 0;
-  conta = this.totalPrice + this.totalPrice*this.discount
-  str = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvcmdlIGtrIiwiaWF0IjoxNTE2MjM5MDIyfQ.cLZFecnonRNy817dqOMoTxgjmgafp4UzJjdTkpt6OVU'
 
   constructor(
     private router: Router,
@@ -47,8 +45,7 @@ export class CarrinhoPageComponent implements OnInit {
 
     this.updatePrice()
 
-    var a = this.jwt.decodeJwt(this.str)
-    console.log(a.name);
+
   }
 
   addQuantity (id : number) {
@@ -60,7 +57,6 @@ export class CarrinhoPageComponent implements OnInit {
       if (item.id == id)
         item.quantidade += 1;
     });
-    console.log(data)
     this.cart = data;
     localStorage.setItem('cart', JSON.stringify(data))
 
@@ -100,22 +96,21 @@ export class CarrinhoPageComponent implements OnInit {
   cartRemoveItem(id : number) {
     this.cart = this.cart.filter( obj => {return obj.id !== id} );
     localStorage.setItem('cart', JSON.stringify(this.cart))
+    if (this.cart.length == 0)
+      this.goToTotem()
   }
 
   applyCupom() {
-    console.log(this.cupom)
     this.cupService.getDiscountByCode({
       codigo: this.cupom,
       desconto: 0
     })
       .subscribe( (data) => {
         this.discount = parseFloat(<string>data);
-        console.log(this.discount);
         if (!this.applied) {
           this.discPrice = this.totalPrice * (1 - this.discount);
           this.applied = !this.applied
         }
-        console.log(this.discPrice);
 
       });
   }

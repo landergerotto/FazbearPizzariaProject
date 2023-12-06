@@ -112,21 +112,6 @@ public class OrderService : IOrderService
 
     public async Task<List<KitchenData>> GetOrders()
     {
-        // var order_query =
-        //     from orders in this.ctx.Pedidos
-        //     select orders;
-
-        // var nOfOrders = await order_query.ToListAsync();
-
-        var query1 =
-            from produtosPedidos in this.ctx.ProdutosPedidos
-            join prod in this.ctx.Produtos
-                on produtosPedidos.ProdutoId equals prod.Id into ppj
-            from pp in ppj.DefaultIfEmpty()
-            group produtosPedidos by produtosPedidos.PedidoId into grouped
-            select new {
-                OrderId = grouped.Key,
-            };
 
         var query777777 =
             from ped in this.ctx.Pedidos

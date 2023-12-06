@@ -10,8 +10,21 @@
     <div class="card text-bg-success">
       <div class="card-body text-center">
         <h2>Pronto!</h2>
-
       </div>
     </div>
   </div>
 </div>
+
+<div class="row text-center">
+  <div class="col-4 p-3">
+    @for(item of preparing; track item) {
+      <h1 style="color:white; font-size:xx-large;">{{item}}</h1>
+    }
+  </div>
+  <div class="col-4 p-3">
+    @for(item of ready; track item) {
+      <h1 style="color:white; font-size:xx-large;">{{item}}</h1>
+    }
+  </div>
+</div>
+

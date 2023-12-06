@@ -12,6 +12,7 @@ import {
   MatSlideToggleModule,
   _MatSlideToggleRequiredValidatorModule,
 } from '@angular/material/slide-toggle';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -25,11 +26,26 @@ export class AdminPageComponent {
 
   constructor(
     public dialog: MatDialog,
-    private client: ClientServiceService,
-    private http: HttpClient
+    private router: Router
   ) { }
 
   hide=true;
+
+  goToProdutos() {
+    this.router.navigate(["produtos"])
+  }
+
+  goToTotem() {
+    this.router.navigate(["totem"])
+  }
+
+  goToCozinhaPedidos() {
+    this.router.navigate(["pedidos"])
+  }
+
+  goToUsuarioaPedidos() {
+    this.router.navigate(["upedidos"])
+  }
 
   registrar()
   {

@@ -1,0 +1,17 @@
+a  {
+  text-decoration: none;
+  height: 1803px;
+}
+a:hover {
+  cursor:pointer;
+}
+
+h1 {
+  color: white;
+}
+
+.margin {
+  margin-top: 20em;
+  margin-bottom: 20em;
+}
+

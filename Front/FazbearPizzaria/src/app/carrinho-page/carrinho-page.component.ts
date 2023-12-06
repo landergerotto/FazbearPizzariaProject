@@ -115,7 +115,7 @@ export class CarrinhoPageComponent implements OnInit {
       });
   }
 
-  createOrder(cart: CartData[]) {
+  createOrder() {
 
     var list: OrderData[] = [];
 
@@ -132,10 +132,14 @@ export class CarrinhoPageComponent implements OnInit {
     console.log(list)
 
     this.orderService.registerOrder(list);
+
+    localStorage.setItem('cart', JSON.stringify([]))
+
+    this.goToTotem();
   }
 
   goToTotem()
   {
-    this.router.navigate(["totem"])
+    this.router.navigate(["pretotem"])
   }
 }

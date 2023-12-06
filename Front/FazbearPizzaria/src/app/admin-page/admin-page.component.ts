@@ -36,7 +36,7 @@ export class AdminPageComponent {
   }
 
   goToTotem() {
-    this.router.navigate(["totem"])
+    this.router.navigate(["pretotem"])
   }
 
   goToCozinhaPedidos() {

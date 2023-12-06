@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pre-totem-page',
@@ -10,4 +11,11 @@ import { CommonModule } from '@angular/common';
 })
 export class PreTotemPageComponent {
 
+  constructor(
+    private router: Router
+  ) { }
+
+  goToTotem() {
+    this.router.navigate(["totem"])
+  }
 }

@@ -25,7 +25,6 @@ export class PedidoPageUserComponent implements OnInit {
 
   ngOnInit() {
     timer(0, this.pollInterval).subscribe(() => {
-      console.log('Updating view...');
       this.orderService.getAllOrders()
       .subscribe( (data: any) => {
         this.orders = data;

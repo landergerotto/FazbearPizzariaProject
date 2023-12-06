@@ -1,3 +1,6 @@
+
+
+
 mat-card-content, mat-card-title {
   color: white;
   text-align: center;
@@ -6,4 +9,9 @@ mat-card-content, mat-card-title {
 }
 .pronto {
   background-color: rgb(0, 124, 83);
+}
+
+.scroll {
+  overflow: auto !important;
+  height: 100%;
 }

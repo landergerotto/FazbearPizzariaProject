@@ -17,12 +17,15 @@ import { CupomService } from '../services/cupom.service';
 import { ProductData } from '../model/product-data';
 import { CartData } from '../model/product-table-data';
 import { PromotionService } from '../services/promotion.service';
+import { BarChartComponent } from '../bar-chart/bar-chart.component';
+import { LineChartComponent } from '../line-chart/line-chart.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-produtos-page',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, RouterOutlet, MatCardModule, MatButtonModule,
-    FormsModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, MatTabsModule, RouterOutlet, MatCardModule,
+    MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './produtos-page.component.html',
   styleUrl: './produtos-page.component.css'
 })

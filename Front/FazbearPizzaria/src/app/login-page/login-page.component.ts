@@ -35,7 +35,6 @@ export class LoginPageComponent {
 
   logar()
   {
-    console.log(this.username)
     this.client.login({
       login: this.username,
       password: this.password,
@@ -48,7 +47,8 @@ export class LoginPageComponent {
       else
       {
         if (result.adm == false)
-          console.log("nao adeemi kk")
+        this.router.navigate(["user"])
+
         else {
           sessionStorage.setItem('jwt', JSON.stringify(result))
           this.router.navigate(["admin"])

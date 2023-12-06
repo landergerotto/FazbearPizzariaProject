@@ -13,12 +13,13 @@ import {
   _MatSlideToggleRequiredValidatorModule,
 } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
+import { BarChartComponent } from '../bar-chart/bar-chart.component';
 
 @Component({
   selector: 'app-admin-page',
   standalone: true,
   imports: [CommonModule, MatCardModule, MatButtonModule,
-    FormsModule, MatFormFieldModule, MatInputModule],
+    FormsModule, MatFormFieldModule, MatInputModule, BarChartComponent],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css'
 })
@@ -45,6 +46,10 @@ export class AdminPageComponent {
 
   goToUsuarioaPedidos() {
     this.router.navigate(["upedidos"])
+  }
+
+  goToDashboard() {
+    this.router.navigate(["dashboard"])
   }
 
   registrar()

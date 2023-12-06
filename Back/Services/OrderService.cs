@@ -32,9 +32,7 @@ public class OrderService : IOrderService
 
         var order_list = await orders.ToListAsync();
         var last_order = order_list[^1];
-
-        System.Console.WriteLine(last_order.Id);
-
+        
         foreach (var item in data)
             await AddItem(last_order.Id, item);
         

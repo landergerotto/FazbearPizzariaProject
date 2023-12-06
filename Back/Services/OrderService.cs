@@ -138,7 +138,9 @@ public class OrderService : IOrderService
             {
                 OrderId = ped.Id,
                 ProdName = prod.Nome,
-                Quantidade = prodPed.Quantidade
+                Quantidade = prodPed.Quantidade,
+                Pronto = ped.Preparado,
+                ped.Entregue
             };
 
         var a = await query777777.ToListAsync();
@@ -147,7 +149,7 @@ public class OrderService : IOrderService
             from peds in a
             group peds by peds.OrderId into grouped
             select new {
-                OrderId = grouped.Key
+                OrderId = grouped.Key,
             };
 
         var c = orders.ToList();
@@ -164,7 +166,9 @@ public class OrderService : IOrderService
                 where member.OrderId == item.OrderId
                 select new {
                     Nome = member.ProdName,
-                    Quantidade = member.Quantidade
+                    Quantidade = member.Quantidade,
+                    Pronto = member.Pronto,
+                    Entregue = member.Entregue
                 };
 
             var b = query.ToList();
@@ -175,7 +179,10 @@ public class OrderService : IOrderService
             {
                 OrderID = item.OrderId,
                 ProductName = Nomes,
-                Quantity = qtds
+                Quantity = qtds,
+                Pronto = b[0].Pronto,
+                Entregue = b[0].Entregue
+
             };
             list.Add(kd);
         }

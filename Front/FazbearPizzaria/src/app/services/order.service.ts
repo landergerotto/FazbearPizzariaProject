@@ -9,9 +9,18 @@ export class OrderService {
 
   constructor(private http: ApiClientService) { }
 
+  getAllOrders ()
+  {
+    return this.http.get('order')
+  }
+
   registerOrder(data: OrderData[])
   {
     this.http.post('order/register', data)
       .subscribe(response => console.log(response))
+  }
+
+  alterOrder(data: any) {
+
   }
 }

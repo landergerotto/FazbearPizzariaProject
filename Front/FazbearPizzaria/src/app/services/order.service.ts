@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiClientService } from './api-client.service';
 import { OrderData } from '../model/order-data';
+import { OrderStatusData } from '../model/order-status-data';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,13 @@ export class OrderService {
       .subscribe(response => console.log(response))
   }
 
-  alterOrder(data: any) {
+  PreparedOrder(data: OrderStatusData) {
+    this.http.put('order/status/prepared', data)
+      .subscribe(response => console.log(response))
+  }
 
+  FinishedOrder(data: OrderStatusData) {
+    this.http.put('order/status/done', data)
+      .subscribe(response => console.log(response))
   }
 }

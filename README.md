@@ -46,7 +46,7 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] É possível ver o custo total do pedido.
 - [X] É possível adicionar uma promoção com um código promocional.
 - [X] Promoção afeta o custo total do pedido.
-- [ ] Pedidos podem ser vistos na tela de pedidos.
+- [X] Pedidos podem ser vistos na tela de pedidos.
 - [ ] É possível editar um pedido como 'Entregue' de alguma forma.
 - [ ] Apenas os pedidos corretos aparecem na tela de pedidos (finalizados, porém não entregues).
 - [X] Usuário é capaz de ver as promoções no sistema.

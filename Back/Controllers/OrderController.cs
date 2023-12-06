@@ -47,4 +47,22 @@ public class OrderController : ControllerBase
         return Ok();
     }
 
+    [HttpPut("status/prepared")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> AlterOrderStatus_Prep(
+        [FromBody]OrderStatusData data,
+        [FromServices]IOrderService orderService)
+    {
+        await orderService.PreparedOrder(data.PedidoId);
+        return Ok( );
+    }
+    [HttpPut("status/done")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> AlterOrderStatus_Done(
+        [FromBody]OrderStatusData data,
+        [FromServices]IOrderService orderService)
+    {
+        await orderService.FinishOrder(data.PedidoId);
+        return Ok( );
+    }
 }

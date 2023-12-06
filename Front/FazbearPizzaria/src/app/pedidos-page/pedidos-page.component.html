@@ -35,7 +35,7 @@
             mat-stroked-button
             color="accent"
             style="width: 20%;"
-            (click)="reloadPage()">PREPARADO</button>
+            (click)="PreparedOrder(item.orderID)">PREPARADO</button>
 
           </div>
         </mat-card>
@@ -79,7 +79,8 @@
               <button
               mat-stroked-button
               color="accent"
-              style="width: 20%;">ENTREGUE</button>
+              style="width: 20%;"
+              (click)="FinishedOrder(item.orderID)">ENTREGUE</button>
             </div>
           </mat-card>
           <p></p>

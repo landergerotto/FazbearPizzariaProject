@@ -154,9 +154,6 @@ public class OrderService : IOrderService
 
         var c = orders.ToList();
 
-
-        System.Console.WriteLine(a[0].OrderId);
-
         List<KitchenData> list = new();
 
         foreach (var item in c)

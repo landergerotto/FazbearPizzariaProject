@@ -14,5 +14,8 @@ public interface IOrderService
     Task PreparedOrder (int order_id);
     Task FinishOrder (int order_id);
     Task<List<KitchenData>> GetOrders();
+    Task<ChartData1> GetChart1();
+    Task<ChartData2> GetChart2();
+
 
 }

@@ -7,7 +7,7 @@ TODO: LOCAL STORAGE NA LISTA DE PRODUTOS Q VEM DO BACK PARA PROMOÇÕES
 Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 
 - [X] Repositório GIT criado.
-- [X] Porjeto do Frontend Angular Criado.
+- [X] Projeto do Frontend Angular Criado.
 - [X] Possui tela de Login.
 - [X] Possui tela de cadastro.
 - [X] Possui tela de usuário normal das promoções.
@@ -28,11 +28,11 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] Entity Framework Configurado no Backend e Model gerada.
 - [X] Bilbioteca de JWT instalada.
 - [X] Operação de cadastro realmente salva um usuário no banco de dados.
-- [X] Cadastro tem algumas validações sendo mais robusto.
+- [X] Cadastro tem algumas validações sendo mais robusto. ++++++++++++++++++++++++
 - [X] Login realmente busca usuário no banco de dados.
 - [X] Aplica salt na senha do usuário.
 - [X] Aplica slow Hash na senha do usuário.
-- [X] Login retorna JWT para o frontend que o guarda no Sessin Storage.
+- [X] Login retorna JWT para o frontend que o guarda no SessiOn Storage.
 - [X] Após o Login a página de usuário normal ou adm é mostrada corretamente.
 - [X] Adm é capaz de ver produtos existentes.
 - [X] Adm é capaz de cadastrar novos produtos.

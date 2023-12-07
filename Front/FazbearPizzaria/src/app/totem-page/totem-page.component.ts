@@ -50,7 +50,6 @@ export class TotemPageComponent implements OnInit {
         return
       }
       this.cart = JSON.parse(storedData);
-      console.log(this.cart)
     // localStorage.setItem('cart', JSON.stringify(this.cart))
   }
 

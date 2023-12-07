@@ -30,4 +30,11 @@ export class OrderService {
     this.http.put('order/status/done', data)
       .subscribe(response => console.log(response))
   }
+
+  getChart1() {
+    return this.http.get('order/chart1')
+  }
+  getChart2() {
+    return this.http.get('order/chart2')
+  }
 }

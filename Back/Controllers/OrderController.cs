@@ -65,4 +65,20 @@ public class OrderController : ControllerBase
         await orderService.FinishOrder(data.PedidoId);
         return Ok( );
     }
+    [HttpGet("chart1")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> Chart1(
+        [FromServices]IOrderService orderService)
+    {
+        var chart = await orderService.GetChart1();
+        return Ok( chart );
+    }
+    [HttpGet("chart2")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> Chart2(
+        [FromServices]IOrderService orderService)
+    {
+        var chart = await orderService.GetChart2();
+        return Ok( chart );
+    }
 }

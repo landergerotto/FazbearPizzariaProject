@@ -9,9 +9,10 @@ import { ProdutosPageComponent } from './produtos-page/produtos-page.component';
 import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
 import { PreTotemPageComponent } from './pre-totem-page/pre-totem-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 export const routes: Routes = [
-  {path: 'login', component: LoginPageComponent},
+  {path: '', component: LoginPageComponent},
   {path: 'admin', component: AdminPageComponent},
   {path: 'user', component: UserPageComponent},
   {path:'pedidos', component: PedidosPageComponent},

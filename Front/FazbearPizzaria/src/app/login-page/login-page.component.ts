@@ -9,6 +9,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ClientServiceService } from '../services/client.service';
 import { HttpClient } from '@angular/common/http';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @Component({
@@ -55,5 +56,44 @@ export class LoginPageComponent {
         }
       }
     })
+  }
+  registrar()
+  {
+    this.dialog.open(NewUserDialog);
+  }
+}
+
+@Component({
+  selector: 'app-new-user-dialog',
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatInputModule,
+    MatButtonModule, MatFormFieldModule, FormsModule, MatSlideToggleModule ],
+  templateUrl: './new-user-dialog.component.html',
+  styleUrl: './login-page.component.css'
+})
+
+export class NewUserDialog
+{
+  username: string = ""
+  password: string = ""
+  repeatPassword: string = ""
+  isAdm : boolean = false;
+
+  constructor(public dialogRef: MatDialogRef<NewUserDialog>,
+    private client: ClientServiceService
+    ) {}
+
+  create()
+  {
+    const elp = this.isAdm;
+    if (this.password == this.repeatPassword) {
+      this.client.register({
+        login: this.username,
+        password: this.password,
+        isAdm: elp,
+      })
+      this.dialogRef.close()
+    }
+
   }
 }

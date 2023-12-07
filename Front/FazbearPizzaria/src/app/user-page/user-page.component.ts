@@ -37,7 +37,6 @@ cupons: any
       this.cupService.getAllCupom()
       .subscribe( (data) => {
         this.cupons = data;
-        console.log(this.cupons)
       });
   }
 }
